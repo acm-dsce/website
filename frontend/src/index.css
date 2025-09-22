@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 224 100% 98%;
+    --foreground: 224 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 20% 15%;
+
+    /* ACM Blue (~#1B75BB) */
+    --primary: 197 70% 45%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 197 80% 58%;
+
+    --secondary: 224 20% 95%;
+    --secondary-foreground: 224 20% 15%;
+
+    --muted: 224 20% 95%;
+    --muted-foreground: 224 10% 50%;
+
+    --accent: 197 85% 86%;
+    --accent-foreground: 197 70% 45%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 224 20% 90%;
+    --input: 224 20% 90%;
+    --ring: 197 70% 45%;
+
+    /* ACM Royal Blue Theme */
+    --royal-blue: 197 70% 45%;
+    --royal-blue-light: 197 80% 58%;
+    --royal-blue-dark: 197 70% 30%;
+    
+    /* 3D and Effects */
+    --glass-bg: 224 100% 98% / 0.1;
+    --glass-border: 224 100% 98% / 0.2;
+    --shadow-3d: 0 10px 30px -10px hsl(197 70% 45% / 0.3);
+    --shadow-glow: 0 0 40px hsl(197 80% 58% / 0.4);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(197 70% 45%), hsl(197 80% 58%));
+    --gradient-hero: linear-gradient(135deg, hsl(197 100% 98%), hsl(197 100% 94%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.1), hsl(224 100% 98% / 0.05));
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 224 20% 8%;
+    --foreground: 224 20% 95%;
+
+    --card: 224 20% 10%;
+    --card-foreground: 224 20% 95%;
+
+    --popover: 224 20% 10%;
+    --popover-foreground: 224 20% 95%;
+
+    --primary: 197 80% 58%;
+    --primary-foreground: 224 20% 8%;
+    --primary-glow: 197 90% 66%;
+
+    --secondary: 224 20% 15%;
+    --secondary-foreground: 224 20% 95%;
+
+    --muted: 224 20% 15%;
+    --muted-foreground: 224 10% 65%;
+
+    --accent: 224 20% 20%;
+    --accent-foreground: 224 100% 60%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 224 20% 15%;
+    --input: 224 20% 15%;
+    --ring: 224 100% 60%;
+
+    /* Dark mode ACM theme */
+    --royal-blue: 224 100% 60%;
+    --royal-blue-light: 224 100% 70%;
+    --royal-blue-dark: 224 76% 35%;
+    
+    --glass-bg: 224 20% 10% / 0.3;
+    --glass-border: 197 80% 58% / 0.2;
+    --shadow-3d: 0 10px 30px -10px hsl(197 80% 58% / 0.4);
+    --shadow-glow: 0 0 40px hsl(197 90% 66% / 0.3);
+    
+    --gradient-primary: linear-gradient(135deg, hsl(197 80% 58%), hsl(197 90% 66%));
+    --gradient-hero: linear-gradient(135deg, hsl(224 20% 8%), hsl(224 20% 12%));
+    --gradient-card: linear-gradient(145deg, hsl(224 20% 15% / 0.3), hsl(224 20% 10% / 0.1));
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Righteous', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  }
+}
+
+/* 3D Effects and Animations */
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-xl;
+  }
+  
+  .floating-3d {
+    animation: float 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+  
+  .hero-3d {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+  }
+  
+  .card-3d:hover {
+    transform: rotateY(5deg) rotateX(5deg) translateZ(20px);
+  }
+  
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .shadow-3d {
+    box-shadow: var(--shadow-3d);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotateX(2deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateX(0deg);
+  }
+  75% {
+    transform: translateY(-10px) rotateX(-2deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
