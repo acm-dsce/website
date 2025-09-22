@@ -1,12 +1,27 @@
 import Navigation from '@/components/Navigation';
 import Hero3D from '@/components/Hero3D';
 import About from '@/components/About';
-import Members from '@/components/Members';
+// Members section moved to its own route
 import Events from '@/components/Events';
 import Gallery from '@/components/Gallery';
 import Contact from '@/components/Contact';
 
+import { useEffect } from 'react';
+
 const Index = () => {
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1);
+      // Delay to ensure content is rendered before scrolling
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 0);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -17,7 +32,6 @@ const Index = () => {
         </section>
         
         <About />
-        <Members />
         <Events />
         <Gallery />
         <Contact />
@@ -38,7 +52,7 @@ const Index = () => {
               <h4 className="font-semibold text-primary-foreground mb-3">Quick Links</h4>
               <div className="space-y-2 text-sm">
                 <a href="#about" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">About ACM</a>
-                <a href="#members" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">Our Team</a>
+                <a href="/members" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">Our Team</a>
                 <a href="#events" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">Events</a>
                 <a href="#contact" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">Contact</a>
               </div>
