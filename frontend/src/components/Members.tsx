@@ -114,20 +114,7 @@ export default function Members() {
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300 max-w-md mx-auto">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Join Our Team</h3>
-              <p className="text-muted-foreground mb-6">
-                Interested in becoming part of ACM DSCE? We're always looking for passionate students.
-              </p>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <p>📧 acm@dsce.edu.in</p>
-                <p>📱 Join our WhatsApp group for updates</p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+        {/* Join CTA removed */}
       </div>
     </section>
   );

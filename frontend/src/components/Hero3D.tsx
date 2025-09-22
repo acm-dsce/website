@@ -1,36 +1,40 @@
 import { Button } from '@/components/ui/button';
-import heroBg from '@/assets/hero-bg.jpg';
+import Particles3D from '@/components/Particles3D';
+import Reveal from '@/components/Reveal';
 
 export default function Hero3D() {
   return (
-    <div className="relative min-h-screen bg-gradient-hero overflow-hidden">
-      <div 
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
+    <div className="relative min-h-screen bg-background overflow-hidden">
+      <div className="bg-grid"></div>
+      <div className="bg-vignette"></div>
+      <Particles3D />
 
       {/* Vue Three.js hero mount point */}
       <div id="vue-hero" className="absolute inset-0"></div>
 
       <div className="relative z-10 flex min-h-screen items-center justify-center px-6">
         <div className="text-center max-w-4xl mx-auto">
-          <div className="floating-3d mb-8">
-            <img src="/acm-logo.png" alt="ACM Logo" className="w-24 h-24 mx-auto rounded-full shadow-glow" />
-          </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-6">
-            <span className="gradient-text">ACM</span>
-            <br />
-            <span className="text-foreground">Student Chapter</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8">Dayananda Sagar College of Engineering</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-gradient-primary hover:shadow-glow transition-all duration-300 card-3d px-8 py-3 text-lg">Join ACM</Button>
-            <Button variant="outline" size="lg" className="glass-card hover:shadow-3d transition-all duration-300 card-3d px-8 py-3 text-lg">Learn More</Button>
-          </div>
+          <Reveal repeat>
+            <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight mb-4 md:mb-6">
+              <span className="text-[hsl(var(--royal-blue))]">ACM</span>
+            </h1>
+          </Reveal>
+          <Reveal delayMs={80} repeat>
+            <div className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Student Chapter</div>
+          </Reveal>
+          <Reveal delayMs={160} repeat>
+            <p className="text-lg md:text-xl text-muted-foreground mb-4">Dayananda Sagar College of Engineering</p>
+          </Reveal>
+          <Reveal delayMs={240} repeat>
+            <p className="text-base md:text-lg text-muted-foreground/90 max-w-3xl mx-auto">
+              We bring together students who love building with technology - from AI/ML and coding to web and design - through workshops, talks, hackathons and collaborative projects.
+            </p>
+          </Reveal>
+          <Reveal delayMs={320} repeat>
+            <p className="mt-3 text-sm md:text-base text-muted-foreground/80 max-w-2xl mx-auto">
+              Explore our events, learn from peers, and contribute to real-world initiatives that push your skills beyond the classroom.
+            </p>
+          </Reveal>
         </div>
       </div>
     </div>

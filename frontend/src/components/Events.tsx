@@ -1,4 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card';
+import Reveal from '@/components/Reveal';
 import { Badge } from '@/components/ui/badge';
 
 const events = [
@@ -53,17 +54,18 @@ export default function Events() {
   return (
     <section id="events" className="py-20 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Our <span className="gradient-text">Events</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Discover the exciting workshops, competitions, and seminars that define our ACM chapter.
           </p>
-        </div>
+        </Reveal>
 
         <div className="space-y-8">
           {events.map((event, index) => (
+            <Reveal>
             <Card 
               key={event.title}
               className={`glass-card card-3d hover:shadow-3d transition-all duration-500 animate-slide-in-right ${
@@ -126,10 +128,12 @@ export default function Events() {
                 </div>
               </CardContent>
             </Card>
+            </Reveal>
           ))}
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mt-16">
+          <Reveal>
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-8 text-center">
               <div className="text-4xl mb-4">🏆</div>
@@ -138,7 +142,8 @@ export default function Events() {
               <p className="text-muted-foreground">Programming contests and hackathons organized</p>
             </CardContent>
           </Card>
-
+          </Reveal>
+          <Reveal delayMs={120}>
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-8 text-center">
               <div className="text-4xl mb-4">🎓</div>
@@ -147,7 +152,8 @@ export default function Events() {
               <p className="text-muted-foreground">Technical workshops and skill development sessions</p>
             </CardContent>
           </Card>
-
+          </Reveal>
+          <Reveal delayMs={240}>
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-8 text-center">
               <div className="text-4xl mb-4">👥</div>
@@ -156,6 +162,7 @@ export default function Events() {
               <p className="text-muted-foreground">Students participated in our events</p>
             </CardContent>
           </Card>
+          </Reveal>
         </div>
       </div>
     </section>

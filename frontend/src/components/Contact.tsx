@@ -2,23 +2,25 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import Reveal from '@/components/Reveal';
 
 export default function Contact() {
   return (
     <section id="contact" className="py-20 px-6 bg-muted/50">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Have questions about ACM DSCE? Want to join our community? We'd love to hear from you!
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
+            <Reveal>
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6 text-foreground">Contact Information</h3>
@@ -63,7 +65,8 @@ export default function Contact() {
                 </div>
               </CardContent>
             </Card>
-
+            </Reveal>
+            <Reveal delayMs={150}>
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-8">
                 <h3 className="text-xl font-bold mb-4 text-foreground">Follow Us</h3>
@@ -91,9 +94,11 @@ export default function Contact() {
                 </div>
               </CardContent>
             </Card>
+            </Reveal>
           </div>
 
           {/* Contact Form */}
+          <Reveal>
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-6 text-foreground">Send us a Message</h3>
@@ -136,6 +141,7 @@ export default function Contact() {
               </form>
             </CardContent>
           </Card>
+          </Reveal>
         </div>
       </div>
     </section>

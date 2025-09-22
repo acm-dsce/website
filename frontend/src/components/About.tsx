@@ -1,20 +1,21 @@
 import { Card, CardContent } from '@/components/ui/card';
+import Reveal from '@/components/Reveal';
 
 export default function About() {
   return (
     <section id="about" className="py-20 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             About <span className="gradient-text">ACM</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             The Association for Computing Machinery is the world's largest educational and scientific computing society.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div className="space-y-6">
+          <Reveal className="space-y-6">
             <h3 className="text-3xl font-bold text-foreground">Our Mission</h3>
             <p className="text-lg text-muted-foreground leading-relaxed">
               ACM brings together computing educators, researchers, and professionals to inspire dialogue, 
@@ -25,37 +26,46 @@ export default function About() {
               At DSCE, our student chapter provides opportunities for networking, professional development, 
               and technical growth in the field of computing and technology.
             </p>
-          </div>
+          </Reveal>
           
           <div className="grid grid-cols-2 gap-4">
+            <Reveal>
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-primary mb-2">50+</div>
                 <div className="text-sm text-muted-foreground">Active Members</div>
               </CardContent>
             </Card>
+            </Reveal>
+            <Reveal delayMs={100}>
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-primary mb-2">25+</div>
                 <div className="text-sm text-muted-foreground">Events Hosted</div>
               </CardContent>
             </Card>
+            </Reveal>
+            <Reveal delayMs={200}>
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-primary mb-2">10+</div>
                 <div className="text-sm text-muted-foreground">Workshops</div>
               </CardContent>
             </Card>
+            </Reveal>
+            <Reveal delayMs={300}>
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-primary mb-2">5</div>
                 <div className="text-sm text-muted-foreground">Years Active</div>
               </CardContent>
             </Card>
+            </Reveal>
           </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
+          <Reveal>
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-8 text-center">
               <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
@@ -69,7 +79,8 @@ export default function About() {
               </p>
             </CardContent>
           </Card>
-
+          </Reveal>
+          <Reveal delayMs={120}>
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-8 text-center">
               <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
@@ -83,7 +94,8 @@ export default function About() {
               </p>
             </CardContent>
           </Card>
-
+          </Reveal>
+          <Reveal delayMs={240}>
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-8 text-center">
               <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
@@ -97,6 +109,7 @@ export default function About() {
               </p>
             </CardContent>
           </Card>
+          </Reveal>
         </div>
       </div>
     </section>

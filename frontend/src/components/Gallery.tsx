@@ -1,4 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card';
+import Reveal from '@/components/Reveal';
 import { useState } from 'react';
 import member1 from '@/assets/member-1.jpg';
 import member2 from '@/assets/member-2.jpg';
@@ -55,17 +56,18 @@ export default function Gallery() {
   return (
     <section id="gallery" className="py-20 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Event <span className="gradient-text">Gallery</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Capturing moments from our workshops, competitions, and community gatherings.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryImages.map((image, index) => (
+            <Reveal>
             <Card 
               key={image.id}
               className="glass-card card-3d hover:shadow-3d transition-all duration-500 cursor-pointer animate-fade-in-up overflow-hidden"
@@ -85,6 +87,7 @@ export default function Gallery() {
                 </div>
               </div>
             </Card>
+            </Reveal>
           ))}
         </div>
 
@@ -120,33 +123,38 @@ export default function Gallery() {
 
         {/* Stats Section */}
         <div className="grid md:grid-cols-4 gap-6 mt-16">
+          <Reveal>
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-6 text-center">
               <div className="text-3xl font-bold text-primary mb-2">100+</div>
               <div className="text-sm text-muted-foreground">Photos Captured</div>
             </CardContent>
           </Card>
-          
+          </Reveal>
+          <Reveal delayMs={100}>
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-6 text-center">
               <div className="text-3xl font-bold text-primary mb-2">25+</div>
               <div className="text-sm text-muted-foreground">Events Documented</div>
             </CardContent>
           </Card>
-          
+          </Reveal>
+          <Reveal delayMs={200}>
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-6 text-center">
               <div className="text-3xl font-bold text-primary mb-2">500+</div>
               <div className="text-sm text-muted-foreground">Memories Created</div>
             </CardContent>
           </Card>
-          
+          </Reveal>
+          <Reveal delayMs={300}>
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-6 text-center">
               <div className="text-3xl font-bold text-primary mb-2">3</div>
               <div className="text-sm text-muted-foreground">Years of History</div>
             </CardContent>
           </Card>
+          </Reveal>
         </div>
       </div>
     </section>
