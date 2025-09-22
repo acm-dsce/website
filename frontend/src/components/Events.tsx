@@ -3,49 +3,13 @@ import { Badge } from '@/components/ui/badge';
 
 const events = [
   {
-    title: "AI & Machine Learning Workshop",
-    date: "March 15, 2024",
-    type: "Workshop",
-    status: "Completed",
-    description: "Introduction to AI/ML concepts with hands-on Python programming and real-world applications.",
-    attendees: 45,
-    highlights: ["Python Programming", "TensorFlow Basics", "Project Development"]
-  },
-  {
-    title: "Hackathon 2024",
-    date: "February 20-21, 2024", 
+    title: "Code Rush",
+    date: "September 25, 2025",
     type: "Competition",
-    status: "Completed",
-    description: "24-hour coding marathon focusing on innovative solutions for smart city challenges.",
-    attendees: 120,
-    highlights: ["Team Collaboration", "Innovation", "Problem Solving"]
-  },
-  {
-    title: "Web Development Bootcamp",
-    date: "January 10-12, 2024",
-    type: "Bootcamp",
-    status: "Completed", 
-    description: "Complete web development training covering frontend and backend technologies.",
-    attendees: 80,
-    highlights: ["React.js", "Node.js", "Database Design"]
-  },
-  {
-    title: "Tech Talk: Future of Computing",
-    date: "April 25, 2024",
-    type: "Seminar",
     status: "Upcoming",
-    description: "Industry expert session on emerging trends in quantum computing and distributed systems.",
+    description: "Competitive programming contest organized by DSCE ACM Student Chapter featuring algorithmic challenges on Virtual Judge platform.",
     attendees: 0,
-    highlights: ["Quantum Computing", "Distributed Systems", "Career Guidance"]
-  },
-  {
-    title: "Competitive Programming Contest",
-    date: "May 10, 2024",
-    type: "Competition", 
-    status: "Upcoming",
-    description: "Inter-college programming competition with algorithmic problem solving challenges.",
-    attendees: 0,
-    highlights: ["Algorithms", "Data Structures", "Problem Solving"]
+    highlights: ["Competitive Programming", "Virtual Judge", "Problem Solving", "Algorithms"]
   }
 ];
 
