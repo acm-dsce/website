@@ -1,62 +1,104 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import member1 from '@/assets/member-1.jpg';
-import member2 from '@/assets/member-2.jpg';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { ExternalLink, Github, Linkedin, User } from 'lucide-react';
 
 const members = [
   {
-    name: "Arjun Sharma",
-    role: "President",
-    year: "4th Year",
-    department: "Computer Science",
-    image: member1,
-    skills: ["Python", "AI/ML", "React"],
-    bio: "Leading the chapter with passion for artificial intelligence and machine learning."
+    name: "Lochan T N",
+    role: "Chairperson",
+    linkedin: "https://www.linkedin.com/in/lochan87/",
+    github: "https://github.com/lochan87"
   },
   {
-    name: "Priya Patel",
-    role: "Vice President",
-    year: "3rd Year", 
-    department: "Information Science",
-    image: member2,
-    skills: ["Java", "Web Dev", "UI/UX"],
-    bio: "Focused on web development and creating amazing user experiences."
+    name: "Disha N G",
+    role: "Vice-Chair",
+    linkedin: "https://www.linkedin.com/in/dishang07/",
+    github: "https://github.com/Dishang07"
   },
   {
-    name: "Rohit Kumar",
-    role: "Technical Lead",
-    year: "3rd Year",
-    department: "Computer Science",
-    image: member1,
-    skills: ["C++", "DSA", "Competitive Programming"],
-    bio: "Passionate about algorithms and competitive programming."
-  },
-  {
-    name: "Sneha Reddy",
-    role: "Event Coordinator",
-    year: "2nd Year",
-    department: "Information Science",
-    image: member2,
-    skills: ["Project Management", "Communication", "Leadership"],
-    bio: "Organizing impactful events and building community connections."
-  },
-  {
-    name: "Karthik Nair",
+    name: "Anurag Jain",
     role: "Secretary",
-    year: "3rd Year",
-    department: "Computer Science", 
-    image: member1,
-    skills: ["Documentation", "Node.js", "Database"],
-    bio: "Maintaining records and developing backend solutions."
+    linkedin: "https://linkedin.com/in/me-jain-anurag/",
+    github: "https://github.com/me-jain-anurag/"
   },
   {
-    name: "Ananya Singh",
+    name: "Bharath Kumar B D",
     role: "Treasurer",
-    year: "2nd Year",
-    department: "Information Science",
-    image: member2,
-    skills: ["Finance", "Excel", "Analytics"],
-    bio: "Managing finances and analyzing chapter growth metrics."
+    linkedin: "https://www.linkedin.com/in/bharath-kumar-b-d/",
+    github: "https://github.com/shaizmd"
+  },
+  {
+    name: "Chandana G",
+    role: "Member",
+    linkedin: "https://www.linkedin.com/in/chandana-g-820a70275",
+    github: "https://github.com/Chandana-107"
+  },
+  {
+    name: "Gautham Krishna Vijayan",
+    role: "Member",
+    linkedin: "https://linkedin.com/in/gautham-krishna-84aaa3275/",
+    github: "https://github.com/Gauthamkv14"
+  },
+  {
+    name: "Dwarampudi Sowmith Reddy",
+    role: "Member",
+    linkedin: "https://www.linkedin.com/in/sowmith-reddy-dwarampudi-7b9665321/",
+    github: "https://github.com/DwarampudiSowmithReddy3"
+  },
+  {
+    name: "Khushi Agrawal",
+    role: "Member",
+    linkedin: "https://www.linkedin.com/in/khushiagrawal028",
+    github: "https://github.com/khushiiagrawal"
+  },
+  {
+    name: "Manaswini G",
+    role: "Member",
+    linkedin: "https://linkedin.com/in/manaswini-g-1b5057265",
+    github: "https://github.com/Manaswini27"
+  },
+  {
+    name: "Prakruthi S",
+    role: "Member",
+    linkedin: "https://www.linkedin.com/in/prakruthi-shivakumar",
+    github: "https://github.com/PRAKRUTHI04/"
+  },
+  {
+    name: "Gaargi L",
+    role: "Member",
+    linkedin: "https://www.linkedin.com/in/gaargi-l-774b162a1",
+    github: "https://github.com/crucinex"
+  },
+  {
+    name: "Pallavi P Kamath",
+    role: "Member",
+    linkedin: "https://www.linkedin.com/in/pallavi-p-kamath",
+    github: "https://github.com/Pulse-23"
+  },
+  {
+    name: "Hamsa G",
+    role: "Member",
+    linkedin: "https://www.linkedin.com/in/hamsagg19/",
+    github: "https://github.com/hamsagg19"
+  },
+  {
+    name: "Niharika N",
+    role: "Member",
+    linkedin: "https://in.linkedin.com/in/niharika-nandakumar-298bb2325",
+    github: "https://github.com/niharika-007"
+  },
+  {
+    name: "Disha T P",
+    role: "Member",
+    linkedin: "https://www.linkedin.com/in/disha-p-866b762a1",
+    github: "https://github.com/dishaprasanna01"
+  },
+  {
+    name: "Mohammed Shaiz T",
+    role: "Member",
+    linkedin: "https://www.linkedin.com/in/shaizmd/",
+    github: "https://github.com/shaizmd"
   }
 ];
 
@@ -73,7 +115,7 @@ export default function Members() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {members.map((member, index) => (
             <Card 
               key={member.name} 
@@ -82,32 +124,34 @@ export default function Members() {
             >
               <CardContent className="p-6">
                 <div className="text-center mb-4">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 shadow-3d"
-                  />
+                  <Avatar className="w-24 h-24 mx-auto mb-4 shadow-3d">
+                    <AvatarFallback className="text-xl font-bold bg-gradient-to-br from-primary/20 to-primary/10 text-primary">
+                      <User className="w-12 h-12" />
+                    </AvatarFallback>
+                  </Avatar>
                   <h3 className="text-xl font-bold text-foreground">{member.name}</h3>
                   <p className="text-primary font-semibold">{member.role}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {member.year} • {member.department}
-                  </p>
                 </div>
 
-                <p className="text-sm text-muted-foreground mb-4 text-center">
-                  {member.bio}
-                </p>
-
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {member.skills.map((skill) => (
-                    <Badge 
-                      key={skill} 
-                      variant="secondary" 
-                      className="bg-gradient-card text-primary"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
+                <div className="flex justify-center gap-4 mt-4">
+                  <a 
+                    href={member.linkedin} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/20 dark:hover:bg-blue-900/40 transition-colors"
+                    aria-label={`${member.name}'s LinkedIn`}
+                  >
+                    <Linkedin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  </a>
+                  <a 
+                    href={member.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
+                    aria-label={`${member.name}'s GitHub`}
+                  >
+                    <Github className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                  </a>
                 </div>
               </CardContent>
             </Card>
