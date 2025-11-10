@@ -15,9 +15,9 @@ const events = [
     date: "November 7, 2025",
     type: "Competition",
     status: "Completed",
-    description: "Competitive programming contest organized by DSCE ACM Student Chapter featuring algorithmic challenges on Virtual Judge platform.",
+    description: "CODE RUSH - A Coding Challenge by DSCE ACM Student Chapter! An exciting 2-hour competitive programming contest designed to test your skills and challenge your intellect. The event featured algorithmic challenges hosted on the Virtual Judge platform, where participants battled against the clock to solve complex programming problems.",
     attendees: "60+",
-    highlights: ["Competitive Programming", "Virtual Judge", "Problem Solving", "Algorithms"],
+    highlights: ["Competitive Programming", "Virtual Judge", "Problem Solving", "Algorithms", "2-Hour Challenge"],
     images: [
       { src: "/code-rush/WhatsApp Image 2025-11-10 at 22.19.35.jpeg", alt: "Code Rush Event - Event highlights" },
       { src: "/code-rush/IMG_2315.JPG", alt: "Code Rush Event - Competition in progress" },
