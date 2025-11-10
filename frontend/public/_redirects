@@ -1,0 +1,6 @@
+# Netlify redirects file
+# This ensures all routes are handled by index.html for client-side routing
+# Without this, refreshing /members or accessing it directly would show a 404 error
+# This is REQUIRED for Single Page Applications (SPAs) using React Router
+/*    /index.html   200
+

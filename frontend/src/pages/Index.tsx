@@ -6,8 +6,11 @@ import Events from '@/components/Events';
 import Contact from '@/components/Contact';
 
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (window.location.hash) {
       const id = window.location.hash.slice(1);
@@ -20,6 +23,11 @@ const Index = () => {
       }, 0);
     }
   }, []);
+
+  const handleMembersClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    navigate('/members');
+  };
 
   return (
     <div className="min-h-screen">
@@ -50,7 +58,7 @@ const Index = () => {
               <h4 className="font-semibold text-primary-foreground mb-3">Quick Links</h4>
               <div className="space-y-2 text-sm">
                 <a href="#about" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">About ACM</a>
-                <a href="/members" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">Our Team</a>
+                <a href="/members" onClick={handleMembersClick} className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors cursor-pointer">Our Team</a>
                 <a href="#events" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">Events</a>
                 <a href="#contact" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">Contact</a>
               </div>
