@@ -47,17 +47,19 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
       },
       plugins,
     );
-    const [canScrollPrev, setCanScrollPrev] = React.useState(false);
-    const [canScrollNext, setCanScrollNext] = React.useState(false);
+    const isLoop = React.useMemo(() => opts?.loop === true, [opts?.loop]);
+    const [canScrollPrev, setCanScrollPrev] = React.useState(isLoop);
+    const [canScrollNext, setCanScrollNext] = React.useState(isLoop);
 
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
         return;
       }
 
-      setCanScrollPrev(api.canScrollPrev());
-      setCanScrollNext(api.canScrollNext());
-    }, []);
+      // If loop is enabled, always allow scrolling in both directions
+      setCanScrollPrev(isLoop || api.canScrollPrev());
+      setCanScrollNext(isLoop || api.canScrollNext());
+    }, [isLoop]);
 
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev();

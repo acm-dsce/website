@@ -32,7 +32,7 @@ export default function About() {
             <Reveal>
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">50+</div>
+                <div className="text-3xl font-bold text-primary mb-2">30+</div>
                 <div className="text-sm text-muted-foreground">Active Members</div>
               </CardContent>
             </Card>
@@ -41,14 +41,14 @@ export default function About() {
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-primary mb-2">25+</div>
-                <div className="text-sm text-muted-foreground">Events Hosted</div>
+                <div className="text-sm text-muted-foreground">Events</div>
               </CardContent>
             </Card>
             </Reveal>
             <Reveal delayMs={200}>
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">10+</div>
+                <div className="text-3xl font-bold text-primary mb-2">15+</div>
                 <div className="text-sm text-muted-foreground">Workshops</div>
               </CardContent>
             </Card>
@@ -56,7 +56,7 @@ export default function About() {
             <Reveal delayMs={300}>
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">5</div>
+                <div className="text-3xl font-bold text-primary mb-2">7</div>
                 <div className="text-sm text-muted-foreground">Years Active</div>
               </CardContent>
             </Card>

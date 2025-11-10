@@ -5,9 +5,7 @@ import { Button } from '@/components/ui/button';
 const navItems = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
-  { name: 'Members', href: '/members' },
   { name: 'Events', href: '#events' },
-  { name: 'Gallery', href: '#gallery' },
   { name: 'Contact', href: '#contact' }
 ];
 
@@ -19,28 +17,37 @@ export default function Navigation() {
   const location = useLocation();
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      
-      // Update active section based on scroll position (only for hash sections)
-      const sections = navItems
-        .filter(item => item.href.startsWith('#'))
-        .map(item => item.href.slice(1));
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      
-      if (current) {
-        setActiveSection(current);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+          
+          // Update active section based on scroll position (only for hash sections)
+          const sections = navItems
+            .filter(item => item.href.startsWith('#'))
+            .map(item => item.href.slice(1));
+          const current = sections.find(section => {
+            const element = document.getElementById(section);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              return rect.top <= 100 && rect.bottom >= 100;
+            }
+            return false;
+          });
+          
+          if (current) {
+            setActiveSection(current);
+          }
+          
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -61,17 +68,27 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'glass-card shadow-3d' : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+    <nav className={`fixed top-0 w-full z-50 py-0.5 transition-all duration-300 !rounded-none will-change-transform ${
+      isScrolled ? 'bg-background/95 shadow-lg border-b border-border/50' : 'bg-transparent'
+    }`} style={{ transform: 'translateZ(0)' }}>
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <img src="/acm-logo.png" alt="ACM Logo" className="w-10 h-10 rounded-full" />
-            <div>
-              <div className="font-bold text-xl gradient-text">ACM DSCE</div>
-              <div className="text-xs text-muted-foreground">Student Chapter</div>
+          <div className="flex items-center space-x-4">
+            <div className="flex-shrink-0 flex items-center">
+              <img 
+                src="/acm-logo.png" 
+                alt="ACM Logo" 
+                className="w-20 h-20 mt-0 md:w-20 md:h-20 object-contain" 
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <div className={`font-bold text-xl md:text-2xl leading-tight transition-colors duration-300 ${
+                isScrolled ? 'gradient-text' : 'gradient-text'
+              }`}>ACM DSCE</div>
+              <div className={`text-xs md:text-sm font-medium transition-colors duration-300 ${
+                isScrolled ? 'text-foreground/70' : 'text-muted-foreground'
+              }`}>Student Chapter</div>
             </div>
           </div>
 
@@ -81,26 +98,38 @@ export default function Navigation() {
               <button
                 key={item.name}
                 onClick={() => handleNav(item.href)}
-                className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
+                className={`text-lg font-medium transition-colors duration-200 hover:text-primary px-2 py-1 ${
                   item.href.startsWith('#')
                     ? (location.pathname === '/' && activeSection === item.href.slice(1)
                         ? 'text-primary border-b-2 border-primary'
-                        : 'text-muted-foreground')
+                        : isScrolled ? 'text-foreground' : 'text-muted-foreground')
                     : (location.pathname.startsWith(item.href)
                         ? 'text-primary border-b-2 border-primary'
-                        : 'text-muted-foreground')
+                        : isScrolled ? 'text-foreground' : 'text-muted-foreground')
                 }`}
               >
                 {item.name}
               </button>
             ))}
+            <Button
+              onClick={() => handleNav('/members')}
+              className={`ml-6 font-semibold px-6 py-2.5 text-base rounded-lg transition-all duration-200 ${
+                location.pathname === '/members'
+                  ? 'bg-gradient-primary text-white shadow-lg hover:shadow-xl'
+                  : 'bg-primary text-white hover:bg-primary/90 shadow-md hover:shadow-lg'
+              }`}
+            >
+              Our Team
+            </Button>
           </div>
 
           {/* CTA removed */}
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className={`md:hidden p-2 transition-colors duration-300 ${
+              isScrolled ? 'text-foreground' : 'text-muted-foreground'
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,26 +144,37 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden glass-card mt-2 py-4 rounded-lg">
-            <div className="flex flex-col space-y-3">
+          <div className={`md:hidden mt-2 py-4 rounded-lg border border-border/50 ${
+            isScrolled ? 'bg-background/95' : 'glass-card'
+          }`}>
+            <div className="flex flex-col space-y-3 px-4">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => handleNav(item.href)}
-                    className={`text-left px-4 py-2 text-base font-medium transition-colors duration-200 hover:text-primary ${
+                    className={`text-left py-2 text-base font-medium transition-colors duration-200 hover:text-primary ${
                       item.href.startsWith('#')
                         ? (location.pathname === '/' && activeSection === item.href.slice(1)
                             ? 'text-primary'
-                            : 'text-muted-foreground')
+                            : isScrolled ? 'text-foreground' : 'text-muted-foreground')
                         : (location.pathname.startsWith(item.href)
                             ? 'text-primary'
-                            : 'text-muted-foreground')
+                            : isScrolled ? 'text-foreground' : 'text-muted-foreground')
                     }`}
                 >
                   {item.name}
                 </button>
               ))}
-              {/* CTA removed */}
+              <Button
+                onClick={() => handleNav('/members')}
+                className={`w-full mt-2 font-semibold px-6 py-2 rounded-lg transition-all duration-200 ${
+                  location.pathname === '/members'
+                    ? 'bg-gradient-primary text-white shadow-lg'
+                    : 'bg-primary text-white hover:bg-primary/90 shadow-md'
+                }`}
+              >
+                Our Team
+              </Button>
             </div>
           </div>
         )}
