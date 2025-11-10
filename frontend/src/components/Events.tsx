@@ -159,8 +159,8 @@ export default function Events() {
                             </CarouselItem>
                           ))}
                         </CarouselContent>
-                        <CarouselPrevious className="left-2 md:left-4 z-10 bg-background/80 hover:bg-background border-2 disabled:opacity-50" />
-                        <CarouselNext className="right-2 md:right-4 z-10 bg-background/80 hover:bg-background border-2 disabled:opacity-50" />
+                        <CarouselPrevious className="left-2 md:left-4 z-10 bg-black/20 hover:bg-black/35 border border-white/20 text-white/90 hover:text-white shadow-md backdrop-blur-md disabled:opacity-20 h-9 w-9 opacity-70 hover:opacity-100 transition-opacity" />
+                        <CarouselNext className="right-2 md:right-4 z-10 bg-black/20 hover:bg-black/35 border border-white/20 text-white/90 hover:text-white shadow-md backdrop-blur-md disabled:opacity-20 h-9 w-9 opacity-70 hover:opacity-100 transition-opacity" />
                       </Carousel>
                     </div>
                   )}
