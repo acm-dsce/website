@@ -180,12 +180,16 @@ All colors MUST be HSL.
 /* 3D Effects and Animations */
 @layer components {
   .glass-card {
-    @apply backdrop-blur-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-xl;
+    @apply backdrop-blur-md bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-xl;
+    will-change: transform;
+    transform: translateZ(0);
+    contain: layout style paint;
   }
   
   .floating-3d {
     animation: float 6s ease-in-out infinite;
     transform-style: preserve-3d;
+    will-change: transform;
   }
   
   .hero-3d {
@@ -196,6 +200,8 @@ All colors MUST be HSL.
   .card-3d {
     transform-style: preserve-3d;
     transition: transform 0.3s ease;
+    will-change: transform;
+    transform: translateZ(0);
   }
   
   .card-3d:hover {

@@ -3,7 +3,6 @@ import Hero3D from '@/components/Hero3D';
 import About from '@/components/About';
 // Members section moved to its own route
 import Events from '@/components/Events';
-import Gallery from '@/components/Gallery';
 import Contact from '@/components/Contact';
 
 import { useEffect } from 'react';
@@ -33,7 +32,6 @@ const Index = () => {
         
         <About />
         <Events />
-        <Gallery />
         <Contact />
       </main>
 
@@ -80,7 +78,7 @@ const Index = () => {
           
           <div className="border-t border-primary-foreground/20 pt-8 text-center">
             <p className="text-primary-foreground/80 text-sm">
-              © 2024 ACM Student Chapter, Dayananda Sagar College of Engineering. All rights reserved.
+              © {new Date().getFullYear()} ACM Student Chapter, Dayananda Sagar College of Engineering. All rights reserved.
             </p>
           </div>
         </div>
