@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import Reveal from '@/components/Reveal';
 import { Badge } from '@/components/ui/badge';
+import { FileText, X } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -8,6 +11,39 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+
+const acmReports = [
+  {
+    year: '2023-24',
+    title: 'ACM Report 2023-24',
+    filename: 'ACMreport2324.pdf'
+  },
+  {
+    year: '2022-23',
+    title: 'ACM Report 2022-23',
+    filename: 'ACMreport23.pdf'
+  },
+  {
+    year: '2021-22',
+    title: 'ACM Report 2021-22',
+    filename: 'ACM_student_chapter_2021-22-min.pdf'
+  },
+  {
+    year: '2020-21',
+    title: 'ACM Report 2020-21',
+    filename: 'ACM_report_2020-21_1-min.pdf'
+  },
+  {
+    year: '2019-20',
+    title: 'ACM Report 2019-20',
+    filename: 'ACM_report-19-20_1.pdf'
+  },
+  {
+    year: '2018-19',
+    title: 'ACM Report 2018-19',
+    filename: 'ACM_report-2018-19.pdf'
+  }
+];
 
 const events = [
   {
@@ -61,6 +97,12 @@ const events = [
 ];
 
 export default function Events() {
+  const [showPreviousEvents, setShowPreviousEvents] = useState(false);
+
+  const handleReportClick = (filename: string) => {
+    window.open(`/${filename}`, '_blank');
+  };
+
   return (
     <section id="events" className="py-20 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
@@ -170,6 +212,69 @@ export default function Events() {
             </Reveal>
           ))}
         </div>
+
+        {/* Previous Events Button */}
+        <Reveal className="text-center mt-16">
+          <Button 
+            onClick={() => setShowPreviousEvents(true)}
+            className="bg-gradient-primary hover:bg-gradient-primary/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            <FileText className="w-5 h-5 mr-2" />
+            Previous Events
+          </Button>
+        </Reveal>
+
+        {/* Previous Events Modal */}
+        {showPreviousEvents && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setShowPreviousEvents(false)}>
+            <div className="bg-background border border-border rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
+              <div className="p-6 border-b border-border flex items-center justify-between">
+                <h3 className="text-2xl font-bold text-foreground">
+                  Previous <span className="gradient-text">ACM Reports</span>
+                </h3>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setShowPreviousEvents(false)}
+                  className="hover:bg-muted"
+                >
+                  <X className="w-5 h-5" />
+                </Button>
+              </div>
+              
+              <div className="p-6 overflow-y-auto max-h-[60vh]">
+                <div className="space-y-3">
+                  {acmReports.map((report, index) => (
+                    <div
+                      key={report.year}
+                      className="flex items-center justify-between p-4 rounded-lg border border-border hover:bg-muted/50 transition-colors cursor-pointer group"
+                      onClick={() => handleReportClick(report.filename)}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
+                          <FileText className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                            {report.title}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            Academic Year {report.year}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-muted-foreground group-hover:text-primary transition-colors">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
