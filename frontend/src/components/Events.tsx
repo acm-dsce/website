@@ -103,6 +103,16 @@ export default function Events() {
     window.open(`/${filename}`, '_blank');
   };
 
+  const toggleModal = (isOpen: boolean) => {
+    setShowPreviousEvents(isOpen);
+    // Prevent background scrolling when modal is open
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  };
+
   return (
     <section id="events" className="py-20 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
@@ -216,17 +226,17 @@ export default function Events() {
         {/* Previous Events Button */}
         <Reveal className="text-center mt-16">
           <Button 
-            onClick={() => setShowPreviousEvents(true)}
-            className="bg-gradient-primary hover:bg-gradient-primary/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+            onClick={() => toggleModal(true)}
+            className="bg-gradient-primary hover:bg-gradient-primary/90 text-white px-12 py-4 rounded-lg text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
           >
-            <FileText className="w-5 h-5 mr-2" />
+            <FileText className="w-6 h-6 mr-3" />
             Previous Events
           </Button>
         </Reveal>
 
         {/* Previous Events Modal */}
         {showPreviousEvents && (
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setShowPreviousEvents(false)}>
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => toggleModal(false)}>
             <div className="bg-background border border-border rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
               <div className="p-6 border-b border-border flex items-center justify-between">
                 <h3 className="text-2xl font-bold text-foreground">
@@ -235,7 +245,7 @@ export default function Events() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={() => setShowPreviousEvents(false)}
+                  onClick={() => toggleModal(false)}
                   className="hover:bg-muted"
                 >
                   <X className="w-5 h-5" />
