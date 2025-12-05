@@ -122,6 +122,21 @@ const members = [
     isFaculty: false
   },
   // Faculty Members
+   {
+    name: "Annapurna Patil",
+    role: "Faculty Advisor",
+    isFaculty: true
+  },
+   {
+    name: "Rajeshwari J",
+    role: "Faculty Advisor",
+    isFaculty: true
+  },
+   {
+    name: "Madhura J",
+    role: "Faculty Advisor",
+    isFaculty: true
+  },
   {
     name: "Latha Anuj",
     role: "Faculty Advisor",
@@ -139,11 +154,6 @@ const members = [
   },
   {
     name: "Prathima Mabel J",
-    role: "Faculty Advisor",
-    isFaculty: true
-  },
-  {
-    name: "Annapurna Patil",
     role: "Faculty Advisor",
     isFaculty: true
   },
