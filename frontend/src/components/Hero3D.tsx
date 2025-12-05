@@ -37,13 +37,13 @@ export default function Hero3D() {
           <Reveal delayMs={320} repeat>
             <div className="inline-block px-6 py-4 rounded-xl bg-gradient-card backdrop-blur-sm mb-8">
               <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
-                <span className="text-sm md:text-base font-medium text-foreground">💻 Hackathons</span>
+                <span className="text-sm md:text-base font-medium text-muted-foreground">💻 Hackathons</span>
                 <span className="text-muted-foreground">•</span>
-                <span className="text-sm md:text-base font-medium text-foreground">💡 Workshops</span>
+                <span className="text-sm md:text-base font-medium text-muted-foreground">💡 Workshops</span>
                 <span className="text-muted-foreground">•</span>
-                <span className="text-sm md:text-base font-medium text-foreground">🏆 Competitions</span>
+                <span className="text-sm md:text-base font-medium text-muted-foreground">🏆 Competitions</span>
                 <span className="text-muted-foreground">•</span>
-                <span className="text-sm md:text-base font-medium text-foreground">🤝🏽 Collaborations</span>
+                <span className="text-sm md:text-base font-medium text-muted-foreground">🤝🏽 Collaborations</span>
               </div>
             </div>
           </Reveal>

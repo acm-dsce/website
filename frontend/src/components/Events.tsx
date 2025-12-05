@@ -307,26 +307,26 @@ export default function Events() {
 
         {/* Previous Events Modal */}
         {showPreviousEvents && (
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => toggleModal(false)}>
-            <div className="bg-background border border-border rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
-              <div className="p-6 border-b border-border flex items-center justify-between bg-gradient-to-r from-background to-muted/30">
-                <div>
-                  <h3 className="text-2xl font-bold text-foreground">
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-start sm:items-center justify-center p-2 sm:p-4 overflow-y-auto" onClick={() => toggleModal(false)}>
+            <div className="bg-background border border-border rounded-xl sm:rounded-2xl max-w-4xl w-full my-4 sm:my-0 max-h-[calc(100vh-2rem)] sm:max-h-[90vh] overflow-hidden shadow-2xl flex flex-col" onClick={(e) => e.stopPropagation()}>
+              <div className="p-4 sm:p-6 border-b border-border flex items-start sm:items-center justify-between bg-gradient-to-r from-background to-muted/30 flex-shrink-0">
+                <div className="flex-1 pr-2">
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground">
                     Previous <span className="gradient-text">ACM Reports</span>
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-1">Click on any report to view in a new tab</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1">Click on any report to view in a new tab</p>
                 </div>
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => toggleModal(false)}
-                  className="hover:bg-muted"
+                  className="hover:bg-muted flex-shrink-0"
                 >
                   <X className="w-5 h-5" />
                 </Button>
               </div>
               
-              <div className="p-6 overflow-y-auto max-h-[calc(90vh-100px)]">
+              <div className="p-4 sm:p-6 overflow-y-auto flex-1 min-h-0">
                 <div className="space-y-4">
                   {acmReports.map((report, index) => (
                     <Card
@@ -334,38 +334,38 @@ export default function Events() {
                       className="glass-card hover:shadow-lg transition-all duration-300 cursor-pointer group border-border hover:border-primary/50"
                       onClick={() => handleReportClick(report.filename)}
                     >
-                      <CardContent className="p-6">
-                        <div className="flex flex-col md:flex-row gap-4">
+                      <CardContent className="p-4 sm:p-6">
+                        <div className="flex flex-col sm:flex-row gap-4">
                           <div className="flex-shrink-0">
-                            <div className="w-16 h-16 bg-gradient-primary rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                              <FileText className="w-8 h-8 text-white" />
+                            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-primary rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                              <FileText className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                             </div>
                           </div>
                           
-                          <div className="flex-1 space-y-3">
-                            <div className="flex items-start justify-between gap-4">
-                              <div>
-                                <h4 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-1">
+                          <div className="flex-1 space-y-2 sm:space-y-3 min-w-0">
+                            <div className="flex items-start justify-between gap-2 sm:gap-4">
+                              <div className="flex-1 min-w-0">
+                                <h4 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-1 break-words">
                                   {report.title}
                                 </h4>
-                                <div className="flex items-center gap-3 text-sm text-muted-foreground mb-2">
+                                <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground mb-2 flex-wrap">
                                   <span className="flex items-center gap-1">
-                                    <Calendar className="w-4 h-4" />
+                                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                                     Academic Year {report.year}
                                   </span>
                                 </div>
                               </div>
                               <div className="text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0">
-                                <ExternalLink className="w-5 h-5" />
+                                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
                               </div>
                             </div>
                             
-                            <p className="text-muted-foreground text-sm leading-relaxed">
+                            <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                               {report.description}
                             </p>
                             
                             {report.highlights && report.highlights.length > 0 && (
-                              <div className="flex flex-wrap gap-2 pt-2">
+                              <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                                 {report.highlights.map((highlight) => (
                                   <Badge 
                                     key={highlight} 

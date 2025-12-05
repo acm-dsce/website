@@ -5,7 +5,15 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { ExternalLink, Github, Linkedin, User, Crown, Users, GraduationCap } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 
-const members = [
+type Member = {
+  name: string;
+  role: string;
+  linkedin: string;
+  github: string;
+  isFaculty: boolean;
+};
+
+const members: Member[] = [
   // Leadership Team
   {
     name: "Lochan T N",
@@ -228,7 +236,7 @@ export default function Members() {
   }, []);
 
   const renderMemberCard = useMemo(() => {
-    return (member: any, index: number, type: 'leadership' | 'student' | 'faculty') => (
+    return (member: Member, index: number, type: 'leadership' | 'student' | 'faculty') => (
       <Reveal key={`${type}-${member.name}`} delayMs={Math.floor(index / 2) * 15}>
         <Card className={`glass-card card-3d hover:shadow-3d transition-all duration-300 ${
           type === 'leadership' ? 'ring-2 ring-primary/30' : 
