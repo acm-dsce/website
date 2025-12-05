@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Reveal from '@/components/Reveal';
 import { Badge } from '@/components/ui/badge';
-import { FileText, X } from 'lucide-react';
+import { FileText, X, ExternalLink, Calendar, Users } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -14,34 +14,53 @@ import {
 
 const acmReports = [
   {
+    year: '2024-25',
+    title: 'ACM Report 2024-25',
+    filename: 'ACM report 24-25-1.pdf',
+    description: 'A comprehensive year featuring Code Rush competitive programming contest, Cypherquest 2k25 zonal hackathon, TechTrek hackathon, and various workshops. Highlights include multi-college collaborations, tech innovation challenges, and community building initiatives.',
+    highlights: ['Code Rush', 'Cypherquest 2k25', 'TechTrek', 'Workshops', 'Multi-College Events']
+  },
+  {
     year: '2023-24',
     title: 'ACM Report 2023-24',
-    filename: 'ACMreport2324.pdf'
+    filename: 'ACMreport2324.pdf',
+    description: 'An active year filled with technical workshops, coding competitions, hackathons, and guest lectures. The chapter organized multiple events focusing on skill development, innovation, and fostering a strong tech community.',
+    highlights: ['Hackathons', 'Workshops', 'Competitions', 'Guest Lectures', 'Tech Talks']
   },
   {
     year: '2022-23',
     title: 'ACM Report 2022-23',
-    filename: 'ACMreport23.pdf'
+    filename: 'ACMreport23.pdf',
+    description: 'A productive year marked by various technical events, coding challenges, and collaborative projects. The chapter continued to grow its membership and organized impactful events for the student community.',
+    highlights: ['Technical Events', 'Coding Challenges', 'Collaborations', 'Community Growth']
   },
   {
     year: '2021-22',
     title: 'ACM Report 2021-22',
-    filename: 'ACM_student_chapter_2021-22-min.pdf'
+    filename: 'ACM_student_chapter_2021-22-min.pdf',
+    description: 'A year of adaptation and innovation with hybrid events combining online and offline activities. Featured workshops on emerging technologies, competitive programming sessions, and networking events.',
+    highlights: ['Hybrid Events', 'Emerging Tech', 'Competitive Programming', 'Networking']
   },
   {
     year: '2020-21',
     title: 'ACM Report 2020-21',
-    filename: 'ACM_report_2020-21_1-min.pdf'
+    filename: 'ACM_report_2020-21_1-min.pdf',
+    description: 'A challenging year that saw the chapter pivot to virtual events. Organized online workshops, webinars, coding competitions, and maintained strong community engagement despite the pandemic.',
+    highlights: ['Virtual Events', 'Online Workshops', 'Webinars', 'Community Engagement']
   },
   {
     year: '2019-20',
     title: 'ACM Report 2019-20',
-    filename: 'ACM_report-19-20_1.pdf'
+    filename: 'ACM_report-19-20_1.pdf',
+    description: 'A successful year with diverse technical events including hackathons, workshops on cutting-edge technologies, guest speaker sessions, and collaborative projects with industry partners.',
+    highlights: ['Hackathons', 'Industry Partnerships', 'Guest Speakers', 'Tech Workshops']
   },
   {
     year: '2018-19',
     title: 'ACM Report 2018-19',
-    filename: 'ACM_report-2018-19.pdf'
+    filename: 'ACM_report-2018-19.pdf',
+    description: 'The foundational year establishing the chapter\'s presence with inaugural events, workshops, and competitions. Set the stage for future growth and community building initiatives.',
+    highlights: ['Inaugural Events', 'Chapter Establishment', 'Workshops', 'Community Building']
   }
 ];
 
@@ -107,11 +126,45 @@ export default function Events() {
     setShowPreviousEvents(isOpen);
     // Prevent background scrolling when modal is open
     if (isOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
+      // Prevent iOS bounce scrolling
+      document.body.style.touchAction = 'none';
+      // Store scroll position for restoration
+      document.body.setAttribute('data-scroll-y', scrollY.toString());
     } else {
-      document.body.style.overflow = 'unset';
+      // Restore scroll position
+      const scrollY = document.body.getAttribute('data-scroll-y');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY));
+      }
+      document.body.removeAttribute('data-scroll-y');
     }
   };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      // Reset body styles if component unmounts while modal is open
+      if (showPreviousEvents) {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        document.body.style.touchAction = '';
+        document.body.removeAttribute('data-scroll-y');
+      }
+    };
+  }, [showPreviousEvents]);
 
   return (
     <section id="events" className="py-20 px-6 bg-background">
@@ -163,7 +216,8 @@ export default function Events() {
                       {event.description}
                     </p>
 
-                    <div>
+                    {/* Key Highlights - Hidden on tablet, shown on desktop */}
+                    <div className="hidden lg:block">
                       <h4 className="font-semibold text-foreground mb-3">Key Highlights</h4>
                       <div className="flex flex-wrap gap-2">
                         {event.highlights.map((highlight) => (
@@ -214,6 +268,22 @@ export default function Events() {
                         <CarouselPrevious className="left-2 md:left-4 z-10 bg-black/20 hover:bg-black/35 border border-white/20 text-white/90 hover:text-white shadow-md backdrop-blur-md disabled:opacity-20 h-9 w-9 opacity-70 hover:opacity-100 transition-opacity" />
                         <CarouselNext className="right-2 md:right-4 z-10 bg-black/20 hover:bg-black/35 border border-white/20 text-white/90 hover:text-white shadow-md backdrop-blur-md disabled:opacity-20 h-9 w-9 opacity-70 hover:opacity-100 transition-opacity" />
                       </Carousel>
+                      
+                      {/* Key Highlights - Shown on tablet, hidden on desktop */}
+                      <div className="mt-6 lg:hidden">
+                        <h4 className="font-semibold text-foreground mb-3">Key Highlights</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {event.highlights.map((highlight) => (
+                            <Badge 
+                              key={highlight} 
+                              variant="secondary" 
+                              className="bg-gradient-card text-primary"
+                            >
+                              {highlight}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -227,21 +297,25 @@ export default function Events() {
         <Reveal className="text-center mt-16">
           <Button 
             onClick={() => toggleModal(true)}
-            className="bg-gradient-primary hover:bg-gradient-primary/90 text-white px-12 py-4 rounded-lg text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+            className="bg-gradient-primary hover:bg-gradient-primary/90 text-white px-16 py-6 rounded-xl text-xl font-bold transition-all duration-300 shadow-2xl hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-110 border-2 border-white/20 hover:border-white/40 relative overflow-hidden group"
           >
-            <FileText className="w-6 h-6 mr-3" />
-            Previous Events
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+            <FileText className="w-7 h-7 mr-3 relative z-10" />
+            <span className="relative z-10">View Previous Events</span>
           </Button>
         </Reveal>
 
         {/* Previous Events Modal */}
         {showPreviousEvents && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => toggleModal(false)}>
-            <div className="bg-background border border-border rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
-              <div className="p-6 border-b border-border flex items-center justify-between">
-                <h3 className="text-2xl font-bold text-foreground">
-                  Previous <span className="gradient-text">ACM Reports</span>
-                </h3>
+            <div className="bg-background border border-border rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
+              <div className="p-6 border-b border-border flex items-center justify-between bg-gradient-to-r from-background to-muted/30">
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground">
+                    Previous <span className="gradient-text">ACM Reports</span>
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-1">Click on any report to view in a new tab</p>
+                </div>
                 <Button
                   variant="ghost"
                   size="icon"
@@ -252,33 +326,61 @@ export default function Events() {
                 </Button>
               </div>
               
-              <div className="p-6 overflow-y-auto max-h-[60vh]">
-                <div className="space-y-3">
+              <div className="p-6 overflow-y-auto max-h-[calc(90vh-100px)]">
+                <div className="space-y-4">
                   {acmReports.map((report, index) => (
-                    <div
+                    <Card
                       key={report.year}
-                      className="flex items-center justify-between p-4 rounded-lg border border-border hover:bg-muted/50 transition-colors cursor-pointer group"
+                      className="glass-card hover:shadow-lg transition-all duration-300 cursor-pointer group border-border hover:border-primary/50"
                       onClick={() => handleReportClick(report.filename)}
                     >
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                          <FileText className="w-5 h-5 text-white" />
+                      <CardContent className="p-6">
+                        <div className="flex flex-col md:flex-row gap-4">
+                          <div className="flex-shrink-0">
+                            <div className="w-16 h-16 bg-gradient-primary rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                              <FileText className="w-8 h-8 text-white" />
+                            </div>
+                          </div>
+                          
+                          <div className="flex-1 space-y-3">
+                            <div className="flex items-start justify-between gap-4">
+                              <div>
+                                <h4 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-1">
+                                  {report.title}
+                                </h4>
+                                <div className="flex items-center gap-3 text-sm text-muted-foreground mb-2">
+                                  <span className="flex items-center gap-1">
+                                    <Calendar className="w-4 h-4" />
+                                    Academic Year {report.year}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0">
+                                <ExternalLink className="w-5 h-5" />
+                              </div>
+                            </div>
+                            
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                              {report.description}
+                            </p>
+                            
+                            {report.highlights && report.highlights.length > 0 && (
+                              <div className="flex flex-wrap gap-2 pt-2">
+                                {report.highlights.map((highlight) => (
+                                  <Badge 
+                                    key={highlight} 
+                                    variant="secondary" 
+                                    className="bg-gradient-card text-primary text-xs"
+                                  >
+                                    {highlight}
+                                  </Badge>
+                                ))}
+                              </div>
+                            )}
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                            {report.title}
-                          </h4>
-                          <p className="text-sm text-muted-foreground">
-                            Academic Year {report.year}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="text-muted-foreground group-hover:text-primary transition-colors">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </div>
-                    </div>
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
               </div>

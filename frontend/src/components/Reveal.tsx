@@ -32,7 +32,7 @@ export default function Reveal({ children, variant = 'up', delayMs = 0, classNam
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: '50px' }
     );
 
     observer.observe(el);

@@ -1,10 +1,82 @@
+import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Reveal from '@/components/Reveal';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // EmailJS configuration - Get these from your EmailJS account (https://www.emailjs.com/)
+      // Create a free account, add an email service (Gmail), create a template, and get your keys
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_default';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_default';
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key';
+
+      // Initialize EmailJS with public key
+      if (publicKey && publicKey !== 'your_public_key') {
+        emailjs.init(publicKey);
+      }
+
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'khushisaritaagrawal@gmail.com',
+        reply_to: formData.email
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams);
+      
+      setSubmitStatus('success');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      setSubmitStatus('error');
+      
+      // Reset error message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <section id="contact" className="py-20 px-6 bg-muted/50">
       <div className="max-w-6xl mx-auto">
@@ -102,41 +174,96 @@ export default function Contact() {
           <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-6 text-foreground">Send us a Message</h3>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-foreground block mb-2">First Name</label>
-                    <Input placeholder="Your first name" className="bg-background/50" />
+                    <label htmlFor="firstName" className="text-sm font-medium text-foreground block mb-2">First Name</label>
+                    <Input 
+                      id="firstName"
+                      name="firstName"
+                      placeholder="Your first name" 
+                      className="bg-background/50" 
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-foreground block mb-2">Last Name</label>
-                    <Input placeholder="Your last name" className="bg-background/50" />
+                    <label htmlFor="lastName" className="text-sm font-medium text-foreground block mb-2">Last Name</label>
+                    <Input 
+                      id="lastName"
+                      name="lastName"
+                      placeholder="Your last name" 
+                      className="bg-background/50" 
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                 </div>
                 
                 <div>
-                  <label className="text-sm font-medium text-foreground block mb-2">Email</label>
-                  <Input type="email" placeholder="your.email@example.com" className="bg-background/50" />
-                </div>
-                
-                <div>
-                  <label className="text-sm font-medium text-foreground block mb-2">Subject</label>
-                  <Input placeholder="What's this about?" className="bg-background/50" />
-                </div>
-                
-                <div>
-                  <label className="text-sm font-medium text-foreground block mb-2">Message</label>
-                  <Textarea 
-                    placeholder="Tell us more about your inquiry..." 
-                    className="bg-background/50 min-h-[120px]" 
+                  <label htmlFor="email" className="text-sm font-medium text-foreground block mb-2">Email</label>
+                  <Input 
+                    id="email"
+                    name="email"
+                    type="email" 
+                    placeholder="your.email@example.com" 
+                    className="bg-background/50" 
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
                 
+                <div>
+                  <label htmlFor="subject" className="text-sm font-medium text-foreground block mb-2">Subject</label>
+                  <Input 
+                    id="subject"
+                    name="subject"
+                    placeholder="What's this about?" 
+                    className="bg-background/50" 
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="text-sm font-medium text-foreground block mb-2">Message</label>
+                  <Textarea 
+                    id="message"
+                    name="message"
+                    placeholder="Tell us more about your inquiry..." 
+                    className="bg-background/50 min-h-[120px]" 
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                    <p className="text-green-600 dark:text-green-400 text-sm font-medium">
+                      ✓ Message sent successfully! We'll get back to you soon.
+                    </p>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+                    <p className="text-red-600 dark:text-red-400 text-sm font-medium">
+                      ✗ Failed to send message. Please try again or contact us directly at acm@dsce.edu.in
+                    </p>
+                  </div>
+                )}
+                
                 <Button 
                   type="submit" 
-                  className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </CardContent>

@@ -8,8 +8,15 @@ import Reveal from '@/components/Reveal';
 const members = [
   // Leadership Team
   {
+    name: "Lochan T N",
+    role: "Vice-Chair",
+    linkedin: "https://www.linkedin.com/in/lochan87/",
+    github: "https://github.com/lochan87",
+    isFaculty: false
+  },
+  {
     name: "Disha N G",
-    role: "Chair",
+    role: "Chairperson",
     linkedin: "https://www.linkedin.com/in/dishang07/",
     github: "https://github.com/Dishang07",
     isFaculty: false
@@ -17,14 +24,14 @@ const members = [
   {
     name: "Anurag Jain",
     role: "Secretary",
-    linkedin: "https://linkedin.com/in/me-jain-anurag/",
+    linkedin: "https://www.linkedin.com/in/me-jain-anurag/",
     github: "https://github.com/me-jain-anurag/",
     isFaculty: false
   },
   {
     name: "Bharath Kumar B D",
     role: "Membership Chair",
-    linkedin: "https://www.linkedin.com/in/bharath-kumar-b-d/",
+    linkedin: "https://www.linkedin.com/in/bharath-kumar-b-d-53a08a37b/",
     github: "https://github.com/shaizmd",
     isFaculty: false
   },
@@ -85,81 +92,118 @@ const members = [
     github: "https://github.com/shaizmd",
     isFaculty: false
   },
+  {
+    name: "Gautham Krishna",
+    role: "Chapter Member",
+    linkedin: "https://www.linkedin.com/in/gautham-krishna-84aaa3275/",
+    github: "https://github.com/Gauthamkv14",
+    isFaculty: false
+  },
   // Student Members
   {
     name: "Aman Agarwal",
     role: "Chapter Member",
+    linkedin: "https://www.linkedin.com/in/aman-agarwal-6013a7316/",
+    github: "https://github.com/amanagarwal-28",
     isFaculty: false
   },
   {
     name: "Deepshree Buchade",
     role: "Chapter Member",
+    linkedin: "",
+    github: "",
     isFaculty: false
   },
   {
     name: "Karthik Devadiga",
     role: "Chapter Member",
-    isFaculty: false
-  },
-  {
-    name: "Kusumika Dutta",
-    role: "Chapter Member",
+    linkedin: "",
+    github: "",
     isFaculty: false
   },
   {
     name: "Ayush Kashyap",
     role: "Chapter Member",
+    linkedin: "",
+    github: "",
     isFaculty: false
   },
   {
     name: "Aruna Mg",
     role: "Chapter Member",
+    linkedin: "",
+    github: "",
     isFaculty: false
   },
   {
     name: "Anupama Vijaykumar",
     role: "Chapter Member",
+    linkedin: "",
+    github: "",
     isFaculty: false
   },
   // Faculty Members
    {
     name: "Annapurna Patil",
     role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
     isFaculty: true
   },
    {
-    name: "Rajeshwari J",
+    name: "Rajeshwari Janthakal",
     role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
     isFaculty: true
   },
    {
     name: "Madhura J",
     role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
     isFaculty: true
   },
   {
     name: "Latha Anuj",
     role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
     isFaculty: true
   },
   {
     name: "Bhavani K",
     role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
     isFaculty: true
   },
   {
     name: "Shalini K B",
     role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
     isFaculty: true
   },
   {
     name: "Prathima Mabel J",
     role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
     isFaculty: true
   },
   {
     name: "Reshma S",
     role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Kusumika Dutta",
+    role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
     isFaculty: true
   }
 ];
@@ -167,11 +211,11 @@ const members = [
 export default function Members() {
   const { leadershipMembers, studentMembers, facultyMembers } = useMemo(() => {
     const leadership = members.filter(member => 
-      ['Chair', 'Secretary', 'Membership Chair'].includes(member.role)
+      ['Chairperson', 'Vice-Chair', 'Secretary', 'Membership Chair'].includes(member.role)
     );
     
     const students = members.filter(member => 
-      !['Chair', 'Secretary', 'Membership Chair'].includes(member.role) && !member.isFaculty
+      !['Chairperson', 'Vice-Chair', 'Secretary', 'Membership Chair'].includes(member.role) && !member.isFaculty
     );
     
     const faculty = members.filter(member => member.isFaculty);
@@ -185,7 +229,7 @@ export default function Members() {
 
   const renderMemberCard = useMemo(() => {
     return (member: any, index: number, type: 'leadership' | 'student' | 'faculty') => (
-      <Reveal key={`${type}-${member.name}`} delayMs={index * 40}>
+      <Reveal key={`${type}-${member.name}`} delayMs={Math.floor(index / 2) * 15}>
         <Card className={`glass-card card-3d hover:shadow-3d transition-all duration-300 ${
           type === 'leadership' ? 'ring-2 ring-primary/30' : 
           type === 'faculty' ? 'ring-2 ring-primary/30' : ''
@@ -207,7 +251,7 @@ export default function Members() {
                 {type === 'leadership' && (
                   <Badge className="absolute -top-2 -right-2 bg-gradient-primary text-white text-xs px-2 py-1">
                     <Crown className="w-3 h-3 mr-1" />
-                    {member.role === 'Chair' ? 'Chair' : member.role === 'Secretary' ? 'Sec' : 'MC'}
+                    {member.role === 'Chairperson' ? 'Chair' : member.role === 'Vice-Chair' ? 'VC' : member.role === 'Secretary' ? 'Sec' : 'MC'}
                   </Badge>
                 )}
               
@@ -221,32 +265,36 @@ export default function Members() {
                 {member.role}
               </p>
 
-              {(member.linkedin || member.github) && (
-                <div className="flex justify-center gap-3 mt-4">
-                  {member.linkedin && (
-                    <a 
-                      href={member.linkedin.startsWith('http') ? member.linkedin : `https://${member.linkedin}`}
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/20 dark:hover:bg-blue-900/40 transition-colors"
-                      aria-label={`${member.name}'s LinkedIn profile`}
-                    >
-                      <Linkedin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                    </a>
-                  )}
-                  {member.github && (
-                    <a 
-                      href={member.github.startsWith('http') ? member.github : `https://${member.github}`}
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
-                      aria-label={`${member.name}'s GitHub profile`}
-                    >
-                      <Github className="w-4 h-4 text-gray-700 dark:text-gray-300" />
-                    </a>
-                  )}
-                </div>
-              )}
+              <div className="flex justify-center gap-3 mt-4">
+                <a 
+                  href={member.linkedin && member.linkedin !== '' ? (member.linkedin.startsWith('http') ? member.linkedin : `https://${member.linkedin}`) : '#'}
+                  target={member.linkedin && member.linkedin !== '' ? '_blank' : '_self'}
+                  rel={member.linkedin && member.linkedin !== '' ? 'noopener noreferrer' : ''}
+                  onClick={(e) => {
+                    if (!member.linkedin || member.linkedin === '') {
+                      e.preventDefault();
+                    }
+                  }}
+                  className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/20 dark:hover:bg-blue-900/40 transition-colors"
+                  aria-label={`${member.name}'s LinkedIn profile`}
+                >
+                  <Linkedin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                </a>
+                <a 
+                  href={member.github && member.github !== '' ? (member.github.startsWith('http') ? member.github : `https://${member.github}`) : '#'}
+                  target={member.github && member.github !== '' ? '_blank' : '_self'}
+                  rel={member.github && member.github !== '' ? 'noopener noreferrer' : ''}
+                  onClick={(e) => {
+                    if (!member.github || member.github === '') {
+                      e.preventDefault();
+                    }
+                  }}
+                  className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
+                  aria-label={`${member.name}'s GitHub profile`}
+                >
+                  <Github className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+                </a>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -255,8 +303,18 @@ export default function Members() {
   }, []);
 
   return (
-    <section id="members" className="py-20 px-6 bg-background">
-      <div className="max-w-6xl mx-auto">
+    <section id="members" className="relative py-20 px-6 bg-background overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-grid opacity-30"></div>
+      <div className="absolute inset-0 bg-vignette"></div>
+      <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-primary/5 via-transparent to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-96 bg-gradient-to-t from-primary/5 via-transparent to-transparent"></div>
+      
+      {/* Animated gradient orbs */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      
+      <div className="relative z-10 max-w-6xl mx-auto">
         <Reveal className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Our <span className="gradient-text">Team</span>
@@ -287,7 +345,7 @@ export default function Members() {
           <Reveal delayMs={200}>
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">{studentMembers.length}</div>
+                <div className="text-3xl font-bold text-primary mb-2">{leadershipMembers.length + studentMembers.length}</div>
                 <div className="text-sm text-muted-foreground">Students</div>
               </CardContent>
             </Card>
@@ -316,7 +374,7 @@ export default function Members() {
               The dedicated leaders driving our chapter's vision and initiatives.
             </p>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {leadershipMembers.map((member, index) => renderMemberCard(member, index, 'leadership'))}
           </div>
         </div>

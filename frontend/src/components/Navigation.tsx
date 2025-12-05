@@ -93,12 +93,12 @@ export default function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleNav(item.href)}
-                className={`text-lg font-medium transition-colors duration-200 hover:text-primary px-2 py-1 ${
+                className={`text-base lg:text-lg font-medium transition-colors duration-200 hover:text-primary px-1 lg:px-2 py-1 ${
                   item.href.startsWith('#')
                     ? (location.pathname === '/' && activeSection === item.href.slice(1)
                         ? 'text-primary border-b-2 border-primary'
@@ -113,7 +113,7 @@ export default function Navigation() {
             ))}
             <Button
               onClick={() => handleNav('/members')}
-              className={`ml-6 font-semibold px-6 py-2.5 text-base rounded-lg transition-all duration-200 ${
+              className={`ml-2 lg:ml-6 font-semibold px-4 lg:px-6 py-2 lg:py-2.5 text-sm lg:text-base rounded-lg transition-all duration-200 ${
                 location.pathname === '/members'
                   ? 'bg-gradient-primary text-white shadow-lg hover:shadow-xl'
                   : 'bg-primary text-white hover:bg-primary/90 shadow-md hover:shadow-lg'
@@ -144,33 +144,33 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className={`md:hidden mt-2 py-4 rounded-lg border border-border/50 ${
-            isScrolled ? 'bg-background/95' : 'glass-card'
+          <div className={`md:hidden mt-3 py-5 rounded-xl border border-border/50 shadow-2xl backdrop-blur-xl ${
+            isScrolled ? 'bg-background/98' : 'bg-background/95'
           }`}>
-            <div className="flex flex-col space-y-3 px-4">
+            <div className="flex flex-col space-y-1 px-2">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => handleNav(item.href)}
-                    className={`text-left py-2 text-base font-medium transition-colors duration-200 hover:text-primary ${
-                      item.href.startsWith('#')
-                        ? (location.pathname === '/' && activeSection === item.href.slice(1)
-                            ? 'text-primary'
-                            : isScrolled ? 'text-foreground' : 'text-muted-foreground')
-                        : (location.pathname.startsWith(item.href)
-                            ? 'text-primary'
-                            : isScrolled ? 'text-foreground' : 'text-muted-foreground')
-                    }`}
+                  className={`text-left py-3 px-4 text-base font-medium transition-all duration-200 rounded-lg ${
+                    item.href.startsWith('#')
+                      ? (location.pathname === '/' && activeSection === item.href.slice(1)
+                          ? 'text-primary bg-primary/10 border-l-4 border-primary'
+                          : 'text-foreground hover:text-primary hover:bg-muted/50')
+                      : (location.pathname.startsWith(item.href)
+                          ? 'text-primary bg-primary/10 border-l-4 border-primary'
+                          : 'text-foreground hover:text-primary hover:bg-muted/50')
+                  }`}
                 >
                   {item.name}
                 </button>
               ))}
               <Button
                 onClick={() => handleNav('/members')}
-                className={`w-full mt-2 font-semibold px-6 py-2 rounded-lg transition-all duration-200 ${
+                className={`w-full mt-4 font-semibold px-6 py-3 rounded-lg transition-all duration-200 ${
                   location.pathname === '/members'
-                    ? 'bg-gradient-primary text-white shadow-lg'
-                    : 'bg-primary text-white hover:bg-primary/90 shadow-md'
+                    ? 'bg-gradient-primary text-white shadow-lg hover:shadow-xl'
+                    : 'bg-gradient-primary text-white hover:bg-gradient-primary/90 shadow-md hover:shadow-lg'
                 }`}
               >
                 Our Team
