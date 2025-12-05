@@ -265,36 +265,38 @@ export default function Members() {
                 {member.role}
               </p>
 
-              <div className="flex justify-center gap-3 mt-4">
-                <a 
-                  href={member.linkedin && member.linkedin !== '' ? (member.linkedin.startsWith('http') ? member.linkedin : `https://${member.linkedin}`) : '#'}
-                  target={member.linkedin && member.linkedin !== '' ? '_blank' : '_self'}
-                  rel={member.linkedin && member.linkedin !== '' ? 'noopener noreferrer' : ''}
-                  onClick={(e) => {
-                    if (!member.linkedin || member.linkedin === '') {
-                      e.preventDefault();
-                    }
-                  }}
-                  className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/20 dark:hover:bg-blue-900/40 transition-colors"
-                  aria-label={`${member.name}'s LinkedIn profile`}
-                >
-                  <Linkedin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                </a>
-                <a 
-                  href={member.github && member.github !== '' ? (member.github.startsWith('http') ? member.github : `https://${member.github}`) : '#'}
-                  target={member.github && member.github !== '' ? '_blank' : '_self'}
-                  rel={member.github && member.github !== '' ? 'noopener noreferrer' : ''}
-                  onClick={(e) => {
-                    if (!member.github || member.github === '') {
-                      e.preventDefault();
-                    }
-                  }}
-                  className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
-                  aria-label={`${member.name}'s GitHub profile`}
-                >
-                  <Github className="w-4 h-4 text-gray-700 dark:text-gray-300" />
-                </a>
-              </div>
+              {type !== 'faculty' && (
+                <div className="flex justify-center gap-3 mt-4">
+                  <a 
+                    href={member.linkedin && member.linkedin !== '' ? (member.linkedin.startsWith('http') ? member.linkedin : `https://${member.linkedin}`) : '#'}
+                    target={member.linkedin && member.linkedin !== '' ? '_blank' : '_self'}
+                    rel={member.linkedin && member.linkedin !== '' ? 'noopener noreferrer' : ''}
+                    onClick={(e) => {
+                      if (!member.linkedin || member.linkedin === '') {
+                        e.preventDefault();
+                      }
+                    }}
+                    className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/20 dark:hover:bg-blue-900/40 transition-colors"
+                    aria-label={`${member.name}'s LinkedIn profile`}
+                  >
+                    <Linkedin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                  </a>
+                  <a 
+                    href={member.github && member.github !== '' ? (member.github.startsWith('http') ? member.github : `https://${member.github}`) : '#'}
+                    target={member.github && member.github !== '' ? '_blank' : '_self'}
+                    rel={member.github && member.github !== '' ? 'noopener noreferrer' : ''}
+                    onClick={(e) => {
+                      if (!member.github || member.github === '') {
+                        e.preventDefault();
+                      }
+                    }}
+                    className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
+                    aria-label={`${member.name}'s GitHub profile`}
+                  >
+                    <Github className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+                  </a>
+                </div>
+              )}
             </div>
           </CardContent>
         </Card>
