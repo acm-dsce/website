@@ -125,8 +125,8 @@ const members: Member[] = [
   {
     name: "Karthik Devadiga",
     role: "Chapter Member",
-    linkedin: "",
-    github: "",
+    linkedin: "https://www.linkedin.com/in/karthik-devadiga-20ab9629a/",
+    github: "https://github.com/karthikdevadiga006",
     isFaculty: false
   },
   {
