@@ -26,7 +26,7 @@ export default function Hero3D() {
         <div className="w-full max-w-3xl mx-auto">
 
           {/* Glass card */}
-          <div className="hero-glass-card rounded-3xl px-6 py-12 sm:px-12 sm:py-16 md:px-16 md:py-20 text-center">
+          <div className="hero-glass-card rounded-3xl px-6 py-6 sm:px-10 sm:py-12 md:px-12 md:py-14 text-center">
 
             {/* College name — small label */}
             <Reveal repeat>
