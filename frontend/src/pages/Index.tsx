@@ -60,6 +60,7 @@ const Index = () => {
                 <a href="#about" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">About ACM</a>
                 <a href="/members" onClick={handleMembersClick} className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors cursor-pointer">Our Team</a>
                 <a href="#events" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">Events</a>
+                <a href="/membership" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors cursor-pointer">Membership</a>
                 <a href="#contact" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">Contact</a>
               </div>
             </div>
@@ -77,7 +78,7 @@ const Index = () => {
             <div>
               <h4 className="font-semibold text-primary-foreground mb-3">Contact Info</h4>
               <div className="space-y-2 text-sm text-primary-foreground/80">
-                <div>📧 acm@dsce.edu.in</div>
+                <div>📧 rajeshwarij-ise@dayanandasagar.edu</div>
                 <div>📍 DSCE, Bangalore</div>
                 <div>🕒 Mon-Fri: 10AM-4PM</div>
               </div>

@@ -9,7 +9,6 @@ type SprinklesProps = {
 
 function cssHslVarToThreeColor(varName: string, fallbackHex: string): THREE.Color {
   const raw = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
-  // Expect format like: "197 70% 45%"
   const match = raw.match(/([\d.]+)\s+([\d.]+)%\s+([\d.]+)%/);
   if (!match) return new THREE.Color(fallbackHex);
   const h = parseFloat(match[1]);
@@ -23,7 +22,7 @@ function cssHslVarToThreeColor(varName: string, fallbackHex: string): THREE.Colo
 function Sprinkles({ count = 1000, radius = 18 }: SprinklesProps) {
   const pointsRef = useRef<THREE.Points>(null);
 
-    const { positions, colors, sizes, phases } = useMemo(() => {
+  const { positions, colors, sizes, phases } = useMemo(() => {
     const pos = new Float32Array(count * 3);
     const cols = new Float32Array(count * 3);
     const siz = new Float32Array(count);
@@ -32,7 +31,6 @@ function Sprinkles({ count = 1000, radius = 18 }: SprinklesProps) {
     const primary = cssHslVarToThreeColor('--royal-blue', '#1b75bb');
 
     for (let i = 0; i < count; i++) {
-      // Random point inside a sphere
       const r = Math.cbrt(Math.random()) * radius;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
@@ -43,13 +41,12 @@ function Sprinkles({ count = 1000, radius = 18 }: SprinklesProps) {
       pos[i * 3 + 1] = y;
       pos[i * 3 + 2] = z;
 
-      // Color near brand blue, darker overall
       const c = primary.clone();
       cols[i * 3 + 0] = c.r;
       cols[i * 3 + 1] = c.g;
       cols[i * 3 + 2] = c.b;
 
-      siz[i] = 1.0; // uniform, not used when sizeAttenuation is false
+      siz[i] = 1.0;
       phs[i] = Math.random() * Math.PI * 2;
     }
     return { positions: pos, colors: cols, sizes: siz, phases: phs };
@@ -64,7 +61,6 @@ function Sprinkles({ count = 1000, radius = 18 }: SprinklesProps) {
       pointsRef.current.rotation.x = Math.sin(t * 0.25) * 0.12;
       pointsRef.current.position.z = Math.sin(t * 0.2) * 0.5;
     }
-    // Keep size constant for uniform look
   });
 
   const geometry = useMemo(() => {
@@ -91,5 +87,3 @@ export default function Particles3D() {
     </div>
   );
 }
-
-

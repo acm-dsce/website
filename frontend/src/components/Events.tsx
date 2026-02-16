@@ -74,10 +74,11 @@ const events = [
     attendees: "60+",
     highlights: ["Competitive Programming", "Virtual Judge", "Problem Solving", "Algorithms", "2-Hour Challenge"],
     images: [
-      { src: "/code-rush/WhatsApp Image 2025-11-10 at 22.19.35.jpeg", alt: "Code Rush Event - Event highlights" },
+      { src: "code-rush/IMG_2324.JPG", alt: "Code Rush Event - Event activities" },
       { src: "/code-rush/IMG_2315.JPG", alt: "Code Rush Event - Competition in progress" },
       { src: "/code-rush/IMG_2319.JPG", alt: "Code Rush Event - Participants coding" },
-      { src: "/code-rush/IMG_2324.JPG", alt: "Code Rush Event - Event activities" }
+      { src: "/code-rush/WhatsApp Image 2025-11-10 at 22.19.35.jpeg",  alt: "Code Rush Event - Event highlights"}
+      
       
     ]
   },
@@ -107,8 +108,8 @@ const events = [
     attendees: "80+",
     highlights: ["8-Hour Hackathon", "Open-Theme", "DSCE ACM", "Innovation", "Tech Skills"],
     images: [
-      { src: "/tech-track/10.JPG", alt: "TechTrek 2025 - Project presentations and demos" },
       { src: "/tech-track/tech-track.jpeg", alt: "TechTrek 2025 - Event opening and welcome" },
+      { src: "/tech-track/10.JPG", alt: "TechTrek 2025 - Project presentations and demos" },
       { src: "/tech-track/9.JPG", alt: "TechTrek 2025 - Participants coding and developing" },
       { src: "/tech-track/11.JPG", alt: "TechTrek 2025 - Closing ceremony and team photos" }
     ]

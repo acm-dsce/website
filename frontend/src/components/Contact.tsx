@@ -106,7 +106,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="font-semibold text-foreground">Email</p>
-                      <p className="text-muted-foreground">acm@dsce.edu.in</p>
+                      
+                      <p className="text-muted-foreground">rajeshwarij-ise@dayanandasagar.edu</p>
                     </div>
                   </div>
 
@@ -253,7 +254,7 @@ export default function Contact() {
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
                     <p className="text-red-600 dark:text-red-400 text-sm font-medium">
-                      ✗ Failed to send message. Please try again or contact us directly at acm@dsce.edu.in
+                      ✗ Failed to send message. Please try again or contact us directly at rajeshwarij-ise@dayanandasagar.edu
                     </p>
                   </div>
                 )}

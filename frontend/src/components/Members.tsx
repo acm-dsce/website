@@ -150,22 +150,85 @@ const members: Member[] = [
     github: "",
     isFaculty: false
   },
+  {
+    name: "Arpit Ravi",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Madhumitha H Hegde",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Shreyas Shimsha",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Bhagavandas",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Vidya Kumari",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Aditya Shome",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
   // Faculty Members
    {
-    name: "Annapurna Patil",
+    name: "Annapurna P Patil",
+    role: "Faculty Coordinator",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Rajeshwari J",
+    role: "Faculty Coordinator",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Shalini K B",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
     isFaculty: true
   },
-   {
-    name: "Rajeshwari Janthakal",
+  {
+    name: "Bharath B C",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
     isFaculty: true
   },
-   {
+  {
+    name: "Vidya G Byakod",
+    role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
     name: "Madhura J",
     role: "Faculty Advisor",
     linkedin: "",
@@ -187,13 +250,6 @@ const members: Member[] = [
     isFaculty: true
   },
   {
-    name: "Shalini K B",
-    role: "Faculty Advisor",
-    linkedin: "",
-    github: "",
-    isFaculty: true
-  },
-  {
     name: "Prathima Mabel J",
     role: "Faculty Advisor",
     linkedin: "",
@@ -209,6 +265,62 @@ const members: Member[] = [
   },
   {
     name: "Kusumika Dutta",
+    role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Chandrakala B M",
+    role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Muzameel Ahmed",
+    role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Vijetha Madhavaram",
+    role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Swapna Vani Dixit",
+    role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Monicashree M",
+    role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Spoorthi M",
+    role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Sai S Joshi",
+    role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Girija R",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
@@ -403,7 +515,7 @@ export default function Members() {
               Distinguished faculty members guiding our academic and professional journey.
             </p>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {facultyMembers.map((member, index) => renderMemberCard(member, index, 'faculty'))}
           </div>
         </div>
