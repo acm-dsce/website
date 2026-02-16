@@ -11,6 +11,8 @@ type Member = {
   linkedin: string;
   github: string;
   isFaculty: boolean;
+  image?: string;
+  incorrectImage?: boolean;
 };
 
 const members: Member[] = [
@@ -198,133 +200,165 @@ const members: Member[] = [
     role: "Faculty Coordinator",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/annapurna_patil.jpg"
   },
   {
     name: "Rajeshwari J",
     role: "Faculty Coordinator",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/rajeshwari_janthakal.jpg"
   },
   {
     name: "Shalini K B",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/shalini_kb.jpg"
   },
   {
     name: "Bharath B C",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/bharath_bc.jpg"
   },
   {
     name: "Vidya G Byakod",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/vidya_byakod.jpg",
+    incorrectImage: true
   },
   {
     name: "Madhura J",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/madhura_j.jpg"
   },
   {
     name: "Latha Anuj",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/latha_anuj.jpg"
   },
   {
     name: "Bhavani K",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/bhavani_k.jpg",
+    incorrectImage: true
   },
   {
     name: "Prathima Mabel J",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/prathima_mabel_j.jpg"
   },
   {
     name: "Reshma S",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/reshma_s.jpg"
   },
   {
     name: "Kusumika Dutta",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/kusumika_dutta.jpg"
   },
   {
     name: "Chandrakala B M",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/chandrakala_bm.jpg"
   },
   {
     name: "Muzameel Ahmed",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/muzameel_ahmed.jpg"
   },
   {
-    name: "Vijetha Madhavaram",
+    name: "Vijetha",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/vijetha_madhavaram.jpg"
   },
   {
-    name: "Swapna Vani Dixit",
+    name: "Madhavaram Swapna",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/swapna_vani_dixit.jpg"
+  },
+  {
+    name: "Vani Dixit",
+    role: "Faculty Advisor",
+    linkedin: "",
+    github: "",
+    isFaculty: true,
+    image: "/faculty_images/swapna_vani_dixit.jpg",
+    incorrectImage: true
   },
   {
     name: "Monicashree M",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/monicashree_m.jpg",
+    incorrectImage: true
   },
   {
     name: "Spoorthi M",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/spoorthi_m.jpg"
   },
   {
     name: "Sai S Joshi",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/sai_s_joshi.jpg",
+    incorrectImage: true
   },
   {
     name: "Girija R",
     role: "Faculty Advisor",
     linkedin: "",
     github: "",
-    isFaculty: true
+    isFaculty: true,
+    image: "/faculty_images/girija_r.jpg"
   }
 ];
 
@@ -358,15 +392,24 @@ export default function Members() {
             <div className="text-center">
               <div className="relative mb-4">
                 <Avatar className="w-20 h-20 mx-auto mb-4 shadow-3d">
-                  <AvatarFallback className={`text-lg font-bold ${
-                    type === 'leadership' 
-                      ? 'bg-gradient-primary text-white' 
-                      : type === 'faculty'
-                      ? 'bg-gradient-primary text-white'
-                      : 'bg-gradient-to-br from-primary/20 to-primary/10 text-primary'
-                  }`}>
-                    <User className="w-10 h-10" />
-                  </AvatarFallback>
+                  {member.image && !member.incorrectImage ? (
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: member.name === "Rajeshwari J" ? "100% center" : "center" }}
+                    />
+                  ) : (
+                    <AvatarFallback className={`text-lg font-bold ${
+                      type === 'leadership' 
+                        ? 'bg-gradient-primary text-white' 
+                        : type === 'faculty'
+                        ? 'bg-gradient-primary text-white'
+                        : 'bg-gradient-to-br from-primary/20 to-primary/10 text-primary'
+                    }`}>
+                      <User className="w-10 h-10" />
+                    </AvatarFallback>
+                  )}
                 </Avatar>
                 {type === 'leadership' && (
                   <Badge className="absolute -top-2 -right-2 bg-gradient-primary text-white text-xs px-2 py-1">
