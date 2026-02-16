@@ -12,9 +12,6 @@ export default function Hero3D() {
       {/* Animated colorful diagonal stripes — the main visual element */}
       <div className="animated-stripes animated-stripes--vivid"></div>
 
-      {/* Vignette for depth */}
-      <div className="bg-vignette"></div>
-
       {/* 3D particles */}
       <Particles3D />
 

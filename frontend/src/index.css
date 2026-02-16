@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 224 20% 94%;
+    --background: 224 20% 88%;
     --foreground: 224 20% 15%;
 
     --card: 0 0% 100%;
@@ -238,7 +238,7 @@ All colors MUST be HSL.
         hsl(var(--stripe-7) / var(--stripe-opacity)) 840px 960px,
         transparent 960px 980px
       );
-    background-size: 1400px 1400px;
+    background-size: 980px 980px;
     animation: stripeSlide 18s linear infinite;
     mix-blend-mode: normal;
     opacity: 0.25;
@@ -314,7 +314,7 @@ All colors MUST be HSL.
     background-position: 0 0;
   }
   100% {
-    background-position: 1400px 0;
+    background-position: 980px 0;
   }
 }
 
@@ -352,9 +352,9 @@ All colors MUST be HSL.
 /* Hero glass card */
 @layer components {
   .hero-glass-card {
-    background: hsl(var(--background) / 0.88);
-    backdrop-filter: blur(40px) saturate(1.3);
-    -webkit-backdrop-filter: blur(40px) saturate(1.3);
+    background: hsl(var(--background) / 0.95);
+    backdrop-filter: blur(50px) saturate(1.2);
+    -webkit-backdrop-filter: blur(50px) saturate(1.2);
     border: 1px solid hsl(var(--foreground) / 0.06);
     box-shadow:
       0 8px 40px hsl(var(--royal-blue) / 0.06),
