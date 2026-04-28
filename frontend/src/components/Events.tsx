@@ -68,9 +68,9 @@ const events = [
   {
     title: "AgriVision 2026",
     date: "April 10, 2026",
-    type: "Symposium",
+    type: "Conclave",
     status: "Completed",
-    description: "DSCE ACM Student Chapter hosted AGRIVISION 2026, a National Research Symposium on Agriculture at DSCE, bringing together researchers, students, and industry experts.\n\n• Expert talks by Nayana Das, Dhanyashree S.G, Dr. T.S. Channesh & Dr. G.C. Jayashree on AI in agriculture\n• Discussions on real-world agricultural challenges and tech-driven solutions\n• Poster Presentation Competition with prizes for the top three teams",
+    description: "DSCE ACM Student Chapter hosted AGRIVISION 2026, a National Research Conclave on Agriculture at DSCE, bringing together researchers, students, and industry experts.\n\n• Expert talks by Nayana Das, Dhanyashree S.G, Dr. T.S. Channesh & Dr. G.C. Jayashree on AI in agriculture\n• Discussions on real-world agricultural challenges and tech-driven solutions\n• Poster Presentation Competition with prizes for the top three teams",
     attendees: "100+",
     highlights: ["National Research Symposium", "AI & Agriculture", "Expert Talks", "Poster Presentation", "Innovation"],
     document: "Agrivision Report 2.docx",
