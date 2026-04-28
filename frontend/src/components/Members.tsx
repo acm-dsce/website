@@ -18,31 +18,52 @@ type Member = {
 const members: Member[] = [
   // Leadership Team
   {
-    name: "Lochan T N",
-    role: "Vice-Chair",
-    linkedin: "https://www.linkedin.com/in/lochan87/",
-    github: "https://github.com/lochan87",
-    isFaculty: false
-  },
-  {
-    name: "Disha N G",
-    role: "Chairperson",
-    linkedin: "https://www.linkedin.com/in/dishang07/",
-    github: "https://github.com/Dishang07",
-    isFaculty: false
-  },
-  {
     name: "Anurag Jain",
-    role: "Secretary",
+    role: "Chair",
     linkedin: "https://www.linkedin.com/in/me-jain-anurag/",
     github: "https://github.com/me-jain-anurag/",
     isFaculty: false
   },
   {
+    name: "Khushi Agrawal",
+    role: "Vice-Chair",
+    linkedin: "https://www.linkedin.com/in/khushiagrawal028",
+    github: "https://github.com/khushiiagrawal",
+    isFaculty: false
+  },
+  {
+    name: "Gautham Vijayan Krishna",
+    role: "Treasurer",
+    linkedin: "https://www.linkedin.com/in/gautham-krishna-84aaa3275/",
+    github: "https://github.com/Gauthamkv14",
+    isFaculty: false
+  },
+  {
     name: "Bharath Kumar B D",
-    role: "Membership Chair",
+    role: "Secretary",
     linkedin: "https://www.linkedin.com/in/bharath-kumar-b-d-53a08a37b/",
-    github: "https://github.com/shaizmd",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Aman Agarwal",
+    role: "Web Master",
+    linkedin: "https://www.linkedin.com/in/aman-agarwal-6013a7316/",
+    github: "https://github.com/amanagarwal-28",
+    isFaculty: false
+  },
+  {
+    name: "Aditya Shome",
+    role: "Membership Chair",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Disha N G",
+    role: "Chapter Member",
+    linkedin: "https://www.linkedin.com/in/dishang07/",
+    github: "https://github.com/Dishang07",
     isFaculty: false
   },
   // Members with GitHub and LinkedIn
@@ -51,13 +72,6 @@ const members: Member[] = [
     role: "Chapter Member",
     linkedin: "https://www.linkedin.com/in/chandana-g-820a70275",
     github: "https://github.com/Chandana-107",
-    isFaculty: false
-  },
-  {
-    name: "Khushi Agrawal",
-    role: "Chapter Member",
-    linkedin: "https://www.linkedin.com/in/khushiagrawal028",
-    github: "https://github.com/khushiiagrawal",
     isFaculty: false
   },
   {
@@ -102,21 +116,7 @@ const members: Member[] = [
     github: "https://github.com/shaizmd",
     isFaculty: false
   },
-  {
-    name: "Gautham Krishna",
-    role: "Chapter Member",
-    linkedin: "https://www.linkedin.com/in/gautham-krishna-84aaa3275/",
-    github: "https://github.com/Gauthamkv14",
-    isFaculty: false
-  },
   // Student Members
-  {
-    name: "Aman Agarwal",
-    role: "Chapter Member",
-    linkedin: "https://www.linkedin.com/in/aman-agarwal-6013a7316/",
-    github: "https://github.com/amanagarwal-28",
-    isFaculty: false
-  },
   {
     name: "Deepshree Buchade",
     role: "Chapter Member",
@@ -174,7 +174,14 @@ const members: Member[] = [
     isFaculty: false
   },
   {
-    name: "Bhagavandas",
+    name: "Shreyas Hegde",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Shimsha Bhagavandas",
     role: "Chapter Member",
     linkedin: "",
     github: "",
@@ -182,13 +189,6 @@ const members: Member[] = [
   },
   {
     name: "Vidya Kumari",
-    role: "Chapter Member",
-    linkedin: "",
-    github: "",
-    isFaculty: false
-  },
-  {
-    name: "Aditya Shome",
     role: "Chapter Member",
     linkedin: "",
     github: "",
@@ -204,8 +204,8 @@ const members: Member[] = [
     image: "/faculty_images/annapurna_patil.jpg"
   },
   {
-    name: "Rajeshwari J",
-    role: "Faculty Coordinator",
+    name: "Dr Rajeshwari Janthakal",
+    role: "Faculty Sponsor",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -364,13 +364,10 @@ const members: Member[] = [
 
 export default function Members() {
   const { leadershipMembers, studentMembers, facultyMembers } = useMemo(() => {
-    const leadership = members.filter(member => 
-      ['Chairperson', 'Vice-Chair', 'Secretary', 'Membership Chair'].includes(member.role)
-    );
+    const leadershipRoles = ['Chair', 'Vice-Chair', 'Treasurer', 'Secretary', 'Web Master', 'Membership Chair'];
+    const leadership = members.filter(member => leadershipRoles.includes(member.role));
     
-    const students = members.filter(member => 
-      !['Chairperson', 'Vice-Chair', 'Secretary', 'Membership Chair'].includes(member.role) && !member.isFaculty
-    );
+    const students = members.filter(member => !leadershipRoles.includes(member.role) && !member.isFaculty);
     
     const faculty = members.filter(member => member.isFaculty);
     

@@ -66,6 +66,20 @@ const acmReports = [
 
 const events = [
   {
+    title: "AgriVision 2026",
+    date: "April 10, 2026",
+    type: "Symposium",
+    status: "Completed",
+    description: "DSCE ACM Student Chapter hosted AGRIVISION 2026, a National Research Symposium on Agriculture at DSCE, bringing together researchers, students, and industry experts.\n\n• Expert talks by Nayana Das, Dhanyashree S.G, Dr. T.S. Channesh & Dr. G.C. Jayashree on AI in agriculture\n• Discussions on real-world agricultural challenges and tech-driven solutions\n• Poster Presentation Competition with prizes for the top three teams",
+    attendees: "100+",
+    highlights: ["National Research Symposium", "AI & Agriculture", "Expert Talks", "Poster Presentation", "Innovation"],
+    document: "Agrivision Report 2.docx",
+    portrait: true,
+    images: [
+      { src: "/agrivision/poster.png", alt: "AgriVision 2026 - Event Poster" }
+    ]
+  },
+  {
     title: "Code Rush",
     date: "November 7, 2025",
     type: "Competition",
@@ -213,9 +227,22 @@ export default function Events() {
                       )}
                     </div>
 
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground whitespace-pre-line">
                       {event.description}
                     </p>
+
+                    {'document' in event && event.document && (
+                      <div className="pt-1">
+                        <Button
+                          className="gap-2.5 bg-gradient-primary text-white hover:opacity-90 px-6 py-5 text-base font-semibold shadow-lg hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:scale-105 transition-all duration-300"
+                          onClick={() => window.open(`/${event.document}`, '_blank')}
+                        >
+                          <FileText className="w-5 h-5" />
+                          View Event Report
+                          <ExternalLink className="w-4 h-4 ml-1 opacity-80" />
+                        </Button>
+                      </div>
+                    )}
 
                     {/* Key Highlights - Hidden on tablet, shown on desktop */}
                     <div className="hidden lg:block">
@@ -254,20 +281,36 @@ export default function Events() {
                         <CarouselContent className="-ml-0">
                           {event.images.map((image, imgIndex) => (
                             <CarouselItem key={imgIndex} className="pl-0">
-                              <div className="relative w-full aspect-[3/2] rounded-lg overflow-hidden border border-border/50 shadow-lg">
-                                <img 
-                                  src={image.src} 
-                                  alt={image.alt}
-                                  className="w-full h-full object-cover"
-                                  loading="lazy"
-                                  style={{ transform: 'translateZ(0)' }}
-                                />
-                              </div>
+                              {'portrait' in event && event.portrait ? (
+                                <div className="relative w-full rounded-lg overflow-hidden border border-border/50 shadow-lg flex justify-center bg-muted/10">
+                                  <img
+                                    src={image.src}
+                                    alt={image.alt}
+                                    className="object-contain max-h-[520px] w-auto"
+                                    loading="lazy"
+                                    style={{ transform: 'translateZ(0)' }}
+                                  />
+                                </div>
+                              ) : (
+                                <div className="relative w-full aspect-[3/2] rounded-lg overflow-hidden border border-border/50 shadow-lg">
+                                  <img 
+                                    src={image.src} 
+                                    alt={image.alt}
+                                    className="w-full h-full object-cover"
+                                    loading="lazy"
+                                    style={{ transform: 'translateZ(0)' }}
+                                  />
+                                </div>
+                              )}
                             </CarouselItem>
                           ))}
                         </CarouselContent>
-                        <CarouselPrevious className="left-2 md:left-4 z-10 bg-black/20 hover:bg-black/35 border border-white/20 text-white/90 hover:text-white shadow-md backdrop-blur-md disabled:opacity-20 h-9 w-9 opacity-70 hover:opacity-100 transition-opacity" />
-                        <CarouselNext className="right-2 md:right-4 z-10 bg-black/20 hover:bg-black/35 border border-white/20 text-white/90 hover:text-white shadow-md backdrop-blur-md disabled:opacity-20 h-9 w-9 opacity-70 hover:opacity-100 transition-opacity" />
+                        {event.images.length > 1 && (
+                          <>
+                            <CarouselPrevious className="left-2 md:left-4 z-10 bg-black/20 hover:bg-black/35 border border-white/20 text-white/90 hover:text-white shadow-md backdrop-blur-md disabled:opacity-20 h-9 w-9 opacity-70 hover:opacity-100 transition-opacity" />
+                            <CarouselNext className="right-2 md:right-4 z-10 bg-black/20 hover:bg-black/35 border border-white/20 text-white/90 hover:text-white shadow-md backdrop-blur-md disabled:opacity-20 h-9 w-9 opacity-70 hover:opacity-100 transition-opacity" />
+                          </>
+                        )}
                       </Carousel>
                       
                       {/* Key Highlights - Shown on tablet, hidden on desktop */}
