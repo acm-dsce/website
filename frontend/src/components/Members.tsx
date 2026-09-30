@@ -12,6 +12,7 @@ type Member = {
   github: string;
   isFaculty: boolean;
   image?: string;
+  imagePosition?: string;
   incorrectImage?: boolean;
 };
 
@@ -265,7 +266,8 @@ const members: Member[] = [
     linkedin: "",
     github: "",
     isFaculty: true,
-    image: "/faculty_images/rajeshwari_janthakal.jpg"
+    image: "/faculty_images/rajeshwari_janthakal.jpg",
+    imagePosition: "right center"
   },
   {
     name: "Shalini K B",
@@ -464,8 +466,8 @@ export default function Members() {
 
   const renderMemberCard = useMemo(() => {
     return (member: Member, index: number, type: 'leadership' | 'student' | 'faculty') => (
-      <Reveal key={`${type}-${member.name}`} delayMs={Math.floor(index / 2) * 15}>
-        <Card className={`glass-card card-3d hover:shadow-3d transition-all duration-300 ${
+      <Reveal key={`${type}-${member.name}`} delayMs={Math.floor(index / 2) * 15} className="h-full">
+        <Card className={`glass-card card-3d hover:shadow-3d transition-all duration-300 h-full ${
           type === 'leadership' ? 'ring-2 ring-primary/30' : 
           type === 'faculty' ? 'ring-2 ring-primary/30' : ''
         }`}>
@@ -478,7 +480,7 @@ export default function Members() {
                       src={member.image} 
                       alt={member.name} 
                       className="w-full h-full object-cover"
-                      style={{ objectPosition: member.name === "Rajeshwari J" ? "100% center" : "center" }}
+                      style={{ objectPosition: member.imagePosition ?? "center" }}
                     />
                   ) : (
                     <AvatarFallback className={`text-lg font-bold ${
@@ -501,8 +503,8 @@ export default function Members() {
               
               </div>
               
-              <h3 className="text-lg font-bold text-foreground mb-1">{member.name}</h3>
-              <p className={`font-semibold text-sm mb-4 ${
+              <h3 className="text-lg font-bold text-foreground mb-1 min-h-[3.25rem] leading-tight flex items-start justify-center">{member.name}</h3>
+              <p className={`font-semibold text-sm mb-4 min-h-[2.5rem] leading-snug ${
                 type === 'leadership' ? 'text-primary' : 
                 type === 'faculty' ? 'text-primary' : 'text-muted-foreground'
               }`}>
