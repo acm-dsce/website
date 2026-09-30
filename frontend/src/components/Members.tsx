@@ -254,7 +254,7 @@ const members: Member[] = [
   // Faculty Members
    {
     name: "Annapurna P Patil",
-    role: "Dean of Academics, DSCE",
+    role: "Senior ACM Member, Dean Academics, DSCE",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -262,12 +262,12 @@ const members: Member[] = [
   },
   {
     name: "Dr Rajeshwari Janthakal",
-    role: "Faculty Sponsor and Coordinator",
+    role: "Faculty Sponsor and Advisor",
     linkedin: "",
     github: "",
     isFaculty: true,
     image: "/faculty_images/rajeshwari_janthakal.jpg",
-    imagePosition: "right center"
+    imagePosition: "80% center"
   },
   {
     name: "Shalini K B",
@@ -309,15 +309,6 @@ const members: Member[] = [
     github: "",
     isFaculty: true,
     image: "/faculty_images/latha_anuj.jpg"
-  },
-  {
-    name: "Bhavani K",
-    role: "Faculty Member",
-    linkedin: "",
-    github: "",
-    isFaculty: true,
-    image: "/faculty_images/bhavani_k.jpg",
-    incorrectImage: true
   },
   {
     name: "Prathima Mabel J",
@@ -641,35 +632,8 @@ export default function Members() {
               Distinguished faculty members guiding our academic and professional journey.
             </p>
           </Reveal>
-          <Reveal className="mb-10">
-            <Card className="glass-card">
-              <CardContent className="p-5 md:p-6">
-                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
-                  <img
-                    src="/A45-5f8f0319-88ec-4cfd-a752-a7d9f1f80724.png"
-                    alt="Dr. Annapurna P Patil"
-                    className="w-28 h-20 sm:w-36 sm:h-24 rounded-xl object-cover shrink-0"
-                  />
-                  <div>
-                    <h4 className="text-lg font-bold text-foreground">Dr. Annapurna P Patil</h4>
-                    <p className="text-sm font-medium text-primary mt-0.5">
-                      Dean of Academics, DSCE · Senior ACM Member
-                    </p>
-                    <p className="text-sm text-muted-foreground leading-relaxed mt-2">
-                      As the Dean of Academics at Dayananda Sagar College of Engineering and a Senior ACM Member,
-                      Dr. Annapurna P Patil brings extensive experience and leadership to our student chapter.
-                      Her guidance and mentorship have been instrumental in shaping the academic and professional
-                      development of our members.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {facultyMembers
-              .filter((member) => member.name !== "Annapurna P Patil")
-              .map((member, index) => renderMemberCard(member, index, 'faculty'))}
+            {facultyMembers.map((member, index) => renderMemberCard(member, index, 'faculty'))}
           </div>
         </div>
 
