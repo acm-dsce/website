@@ -1,7 +1,6 @@
 import Navigation from '@/components/Navigation';
 import Hero3D from '@/components/Hero3D';
 import About from '@/components/About';
-import FacultyHighlight from '@/components/FacultyHighlight';
 // Members section moved to its own route
 import Events from '@/components/Events';
 import Contact from '@/components/Contact';
@@ -40,7 +39,6 @@ const Index = () => {
         </section>
         
         <About />
-        <FacultyHighlight />
         <Events />
         <Contact />
       </main>

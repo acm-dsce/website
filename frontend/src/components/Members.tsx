@@ -39,13 +39,6 @@ const members: Member[] = [
     isFaculty: false
   },
   {
-    name: "Bharath Kumar B D",
-    role: "Secretary",
-    linkedin: "https://www.linkedin.com/in/bharath-kumar-b-d-53a08a37b/",
-    github: "",
-    isFaculty: false
-  },
-  {
     name: "Aman Agarwal",
     role: "Web Master",
     linkedin: "https://www.linkedin.com/in/aman-agarwal-6013a7316/",
@@ -59,56 +52,7 @@ const members: Member[] = [
     github: "",
     isFaculty: false
   },
-  {
-    name: "Disha N G",
-    role: "Chapter Member",
-    linkedin: "https://www.linkedin.com/in/dishang07/",
-    github: "https://github.com/Dishang07",
-    isFaculty: false
-  },
   // Members with GitHub and LinkedIn
-  {
-    name: "Chandana G",
-    role: "Chapter Member",
-    linkedin: "https://www.linkedin.com/in/chandana-g-820a70275",
-    github: "https://github.com/Chandana-107",
-    isFaculty: false
-  },
-  {
-    name: "Prakruthi S",
-    role: "Chapter Member",
-    linkedin: "https://www.linkedin.com/in/prakruthi-shivakumar",
-    github: "https://github.com/PRAKRUTHI04/",
-    isFaculty: false
-  },
-  {
-    name: "Gaargi L",
-    role: "Chapter Member",
-    linkedin: "https://www.linkedin.com/in/gaargi-l-774b162a1",
-    github: "https://github.com/crucinex",
-    isFaculty: false
-  },
-  {
-    name: "Pallavi P Kamath",
-    role: "Chapter Member",
-    linkedin: "https://www.linkedin.com/in/pallavi-p-kamath",
-    github: "https://github.com/Pulse-23",
-    isFaculty: false
-  },
-  {
-    name: "Hamsa G",
-    role: "Chapter Member",
-    linkedin: "https://www.linkedin.com/in/hamsagg19/",
-    github: "https://github.com/hamsagg19",
-    isFaculty: false
-  },
-  {
-    name: "Disha T P",
-    role: "Chapter Member",
-    linkedin: "https://www.linkedin.com/in/disha-p-866b762a1",
-    github: "https://github.com/dishaprasanna01",
-    isFaculty: false
-  },
   {
     name: "Mohammed Shaiz",
     role: "Chapter Member",
@@ -167,13 +111,6 @@ const members: Member[] = [
     isFaculty: false
   },
   {
-    name: "Shreyas Shimsha",
-    role: "Chapter Member",
-    linkedin: "",
-    github: "",
-    isFaculty: false
-  },
-  {
     name: "Shreyas Hegde",
     role: "Chapter Member",
     linkedin: "",
@@ -194,10 +131,129 @@ const members: Member[] = [
     github: "",
     isFaculty: false
   },
+  {
+    name: "Praveen A",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Sreevidya B S",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Pavani B V",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Ankita C",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Niveditha G N",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Prathamesh Hiremath",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Prajin Jain",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Prathiksha Kesari",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Manaswini Kv",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Krupa N",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Pallavi N",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Sinchana O S",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Reshma S",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Pavitra Savant",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Ananya Shastry",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Prakruthi T",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
+  {
+    name: "Arjun Paartha",
+    role: "Chapter Member",
+    linkedin: "",
+    github: "",
+    isFaculty: false
+  },
   // Faculty Members
    {
     name: "Annapurna P Patil",
-    role: "Faculty Coordinator",
+    role: "Dean of Academics, DSCE",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -205,7 +261,7 @@ const members: Member[] = [
   },
   {
     name: "Dr Rajeshwari Janthakal",
-    role: "Faculty Sponsor",
+    role: "Faculty Sponsor and Coordinator",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -229,7 +285,7 @@ const members: Member[] = [
   },
   {
     name: "Vidya G Byakod",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -238,7 +294,7 @@ const members: Member[] = [
   },
   {
     name: "Madhura J",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -246,7 +302,7 @@ const members: Member[] = [
   },
   {
     name: "Latha Anuj",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -254,7 +310,7 @@ const members: Member[] = [
   },
   {
     name: "Bhavani K",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -263,7 +319,7 @@ const members: Member[] = [
   },
   {
     name: "Prathima Mabel J",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -271,7 +327,7 @@ const members: Member[] = [
   },
   {
     name: "Reshma S",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -279,7 +335,7 @@ const members: Member[] = [
   },
   {
     name: "Kusumika Dutta",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -287,7 +343,7 @@ const members: Member[] = [
   },
   {
     name: "Chandrakala B M",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -295,7 +351,7 @@ const members: Member[] = [
   },
   {
     name: "Muzameel Ahmed",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -303,7 +359,7 @@ const members: Member[] = [
   },
   {
     name: "Vijetha",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -311,7 +367,7 @@ const members: Member[] = [
   },
   {
     name: "Madhavaram Swapna",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -319,7 +375,7 @@ const members: Member[] = [
   },
   {
     name: "Vani Dixit",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -328,7 +384,7 @@ const members: Member[] = [
   },
   {
     name: "Monicashree M",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -337,7 +393,7 @@ const members: Member[] = [
   },
   {
     name: "Spoorthi M",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -345,7 +401,7 @@ const members: Member[] = [
   },
   {
     name: "Sai S Joshi",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
@@ -354,11 +410,39 @@ const members: Member[] = [
   },
   {
     name: "Girija R",
-    role: "Faculty Advisor",
+    role: "Faculty Member",
     linkedin: "",
     github: "",
     isFaculty: true,
     image: "/faculty_images/girija_r.jpg"
+  },
+  {
+    name: "Samitha Khaiyum",
+    role: "Faculty Member",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Pavithra Shetty",
+    role: "Faculty Member",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Raksha Kodnad R",
+    role: "Faculty Member",
+    linkedin: "",
+    github: "",
+    isFaculty: true
+  },
+  {
+    name: "Seema Aparaj",
+    role: "Faculty Member",
+    linkedin: "",
+    github: "",
+    isFaculty: true
   }
 ];
 
@@ -516,7 +600,7 @@ export default function Members() {
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-primary mb-2">{facultyMembers.length}</div>
-                <div className="text-sm text-muted-foreground">Faculty Advisors</div>
+                <div className="text-sm text-muted-foreground">Faculty</div>
               </CardContent>
             </Card>
           </Reveal>
@@ -547,7 +631,7 @@ export default function Members() {
             <div className="flex items-center justify-center gap-3 mb-4">
               <GraduationCap className="w-6 h-6 text-primary" />
               <h3 className="text-2xl font-bold">
-                Faculty <span className="gradient-text">Advisors</span>
+                Faculty <span className="gradient-text">Team</span>
               </h3>
               <GraduationCap className="w-6 h-6 text-primary" />
             </div>
@@ -555,8 +639,35 @@ export default function Members() {
               Distinguished faculty members guiding our academic and professional journey.
             </p>
           </Reveal>
+          <Reveal className="mb-10">
+            <Card className="glass-card">
+              <CardContent className="p-5 md:p-6">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
+                  <img
+                    src="/A45-5f8f0319-88ec-4cfd-a752-a7d9f1f80724.png"
+                    alt="Dr. Annapurna P Patil"
+                    className="w-28 h-20 sm:w-36 sm:h-24 rounded-xl object-cover shrink-0"
+                  />
+                  <div>
+                    <h4 className="text-lg font-bold text-foreground">Dr. Annapurna P Patil</h4>
+                    <p className="text-sm font-medium text-primary mt-0.5">
+                      Dean of Academics, DSCE · Senior ACM Member
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-2">
+                      As the Dean of Academics at Dayananda Sagar College of Engineering and a Senior ACM Member,
+                      Dr. Annapurna P Patil brings extensive experience and leadership to our student chapter.
+                      Her guidance and mentorship have been instrumental in shaping the academic and professional
+                      development of our members.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {facultyMembers.map((member, index) => renderMemberCard(member, index, 'faculty'))}
+            {facultyMembers
+              .filter((member) => member.name !== "Annapurna P Patil")
+              .map((member, index) => renderMemberCard(member, index, 'faculty'))}
           </div>
         </div>
 
