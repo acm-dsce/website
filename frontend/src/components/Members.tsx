@@ -343,14 +343,6 @@ const members: Member[] = [
     image: "/faculty_images/chandrakala_bm.jpg"
   },
   {
-    name: "Muzameel Ahmed",
-    role: "Faculty Member",
-    linkedin: "",
-    github: "",
-    isFaculty: true,
-    image: "/faculty_images/muzameel_ahmed.jpg"
-  },
-  {
     name: "Vijetha",
     role: "Faculty Member",
     linkedin: "",
@@ -400,14 +392,6 @@ const members: Member[] = [
     isFaculty: true,
     image: "/faculty_images/sai_s_joshi.jpg",
     incorrectImage: true
-  },
-  {
-    name: "Girija R",
-    role: "Faculty Member",
-    linkedin: "",
-    github: "",
-    isFaculty: true,
-    image: "/faculty_images/girija_r.jpg"
   },
   {
     name: "Samitha Khaiyum",
