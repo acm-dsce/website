@@ -14,6 +14,13 @@ import {
 
 const acmReports = [
   {
+    year: '2025-26',
+    title: 'ACM Report 2025-26',
+    filename: 'Agrivision Report 2.docx',
+    description: 'A year featuring the Code Rush competitive programming contest and AgriVision 2026, a National Research Conclave on Agriculture, along with workshops and community building initiatives.',
+    highlights: ['Code Rush', 'AgriVision 2026', 'Workshops', 'Research Conclave']
+  },
+  {
     year: '2024-25',
     title: 'ACM Report 2024-25',
     filename: 'ACM report 24-25-1.pdf',

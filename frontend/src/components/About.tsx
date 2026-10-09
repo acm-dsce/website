@@ -56,8 +56,16 @@ export default function About() {
             <Reveal delayMs={300}>
             <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">7</div>
+                <div className="text-3xl font-bold text-primary mb-2">8+</div>
                 <div className="text-sm text-muted-foreground">Years Active</div>
+              </CardContent>
+            </Card>
+            </Reveal>
+            <Reveal delayMs={400} className="col-span-2">
+            <Card className="glass-card card-3d hover:shadow-3d transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl font-bold text-primary mb-2">40+</div>
+                <div className="text-sm text-muted-foreground">Total Events</div>
               </CardContent>
             </Card>
             </Reveal>
